@@ -1,0 +1,68 @@
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Repository.deps.json
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Repository.dll
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\ref\Repository.dll
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Repository.pdb
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Contracts.dll
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Entities.dll
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Contracts.pdb
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Entities.pdb
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.csprojAssemblyReference.cache
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.AssemblyInfoInputs.cache
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.AssemblyInfo.cs
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.csproj.CoreCompileInputs.cache
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.csproj.CopyComplete
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.dll
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\ref\Repository.dll
+D:\Visual Studio 2019\source\Personnel\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.pdb
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Repository.deps.json
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Repository.dll
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\ref\Repository.dll
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Repository.pdb
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Contracts.dll
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Entities.dll
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Contracts.pdb
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Entities.pdb
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.csprojAssemblyReference.cache
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.AssemblyInfoInputs.cache
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.AssemblyInfo.cs
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.csproj.CoreCompileInputs.cache
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.csproj.CopyComplete
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.dll
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\ref\Repository.dll
+D:\Visual Studio 2019\source\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.pdb
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Repository.deps.json
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Repository.dll
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\ref\Repository.dll
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Repository.pdb
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Contracts.dll
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Entities.dll
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Contracts.pdb
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Entities.pdb
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.csprojAssemblyReference.cache
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.AssemblyInfoInputs.cache
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.AssemblyInfo.cs
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.csproj.CoreCompileInputs.cache
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.csproj.CopyComplete
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.dll
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\ref\Repository.dll
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.pdb
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Repository.deps.json
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Repository.dll
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\ref\Repository.dll
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Repository.pdb
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Contracts.dll
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Entities.dll
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Contracts.pdb
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\bin\Debug\net5.0\Entities.pdb
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.csprojAssemblyReference.cache
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.AssemblyInfoInputs.cache
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.AssemblyInfo.cs
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.csproj.CoreCompileInputs.cache
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.csproj.CopyComplete
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.dll
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\ref\Repository.dll
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Repository\obj\Debug\net5.0\Repository.pdb

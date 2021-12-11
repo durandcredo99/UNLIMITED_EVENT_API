@@ -1,0 +1,405 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API.csproj": {}
+  },
+  "projects": {
+    "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Contracts\\Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Contracts\\Contracts.csproj",
+        "projectName": "Contracts",
+        "projectPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Contracts\\Contracts.csproj",
+        "packagesPath": "C:\\Users\\Utilisateur\\.nuget\\packages\\",
+        "outputPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Contracts\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Utilisateur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Entities\\Entities.csproj": {
+                "projectPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Entities\\Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Entities\\Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Entities\\Entities.csproj",
+        "projectName": "Entities",
+        "projectPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Entities\\Entities.csproj",
+        "packagesPath": "C:\\Users\\Utilisateur\\.nuget\\packages\\",
+        "outputPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Entities\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Utilisateur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[2.15.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
+            "System.Linq.Dynamic.Core": {
+              "target": "Package",
+              "version": "[1.2.13, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\LoggerServices\\LoggerServices.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\LoggerServices\\LoggerServices.csproj",
+        "projectName": "LoggerServices",
+        "projectPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\LoggerServices\\LoggerServices.csproj",
+        "packagesPath": "C:\\Users\\Utilisateur\\.nuget\\packages\\",
+        "outputPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\LoggerServices\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Utilisateur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Contracts\\Contracts.csproj": {
+                "projectPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Contracts\\Contracts.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "NLog.Web.AspNetCore": {
+              "target": "Package",
+              "version": "[4.14.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Repository\\Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Repository\\Repository.csproj",
+        "projectName": "Repository",
+        "projectPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Repository\\Repository.csproj",
+        "packagesPath": "C:\\Users\\Utilisateur\\.nuget\\packages\\",
+        "outputPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Utilisateur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Contracts\\Contracts.csproj": {
+                "projectPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Contracts\\Contracts.csproj"
+              },
+              "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Entities\\Entities.csproj": {
+                "projectPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Entities\\Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API.csproj",
+        "projectName": "UNLIMITED_EVENT_API",
+        "projectPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API.csproj",
+        "packagesPath": "C:\\Users\\Utilisateur\\.nuget\\packages\\",
+        "outputPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Utilisateur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\LoggerServices\\LoggerServices.csproj": {
+                "projectPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\LoggerServices\\LoggerServices.csproj"
+              },
+              "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Repository\\Repository.csproj": {
+                "projectPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Repository\\Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.1, )",
+              "noWarn": [
+                "NU1605"
+              ]
+            },
+            "Microsoft.AspNetCore.Authentication.OpenIdConnect": {
+              "target": "Package",
+              "version": "[5.0.1, )",
+              "noWarn": [
+                "NU1605"
+              ]
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

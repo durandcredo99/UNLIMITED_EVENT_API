@@ -1,0 +1,30 @@
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Contracts\bin\Release\net5.0\Contracts.deps.json
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Contracts\bin\Release\net5.0\Contracts.dll
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Contracts\bin\Release\net5.0\ref\Contracts.dll
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Contracts\bin\Release\net5.0\Contracts.pdb
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Contracts\bin\Release\net5.0\Entities.dll
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Contracts\bin\Release\net5.0\Entities.pdb
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.csprojAssemblyReference.cache
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.AssemblyInfoInputs.cache
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.AssemblyInfo.cs
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.csproj.CoreCompileInputs.cache
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.csproj.CopyComplete
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.dll
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\ref\Contracts.dll
+D:\PROFESSIONNEL\Projets\SIMPLE IT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.pdb
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Contracts\bin\Release\net5.0\Contracts.deps.json
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Contracts\bin\Release\net5.0\Contracts.dll
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Contracts\bin\Release\net5.0\ref\Contracts.dll
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Contracts\bin\Release\net5.0\Contracts.pdb
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Contracts\bin\Release\net5.0\Entities.dll
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Contracts\bin\Release\net5.0\Entities.pdb
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.csprojAssemblyReference.cache
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.AssemblyInfoInputs.cache
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.AssemblyInfo.cs
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.csproj.CoreCompileInputs.cache
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.csproj.CopyComplete
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.dll
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\ref\Contracts.dll
+D:\PROFESSIONNEL\PROJETS\SIMPLE IT\UNLIMITED EVENT\UNLIMITED_EVENT_API\Contracts\obj\Release\net5.0\Contracts.pdb

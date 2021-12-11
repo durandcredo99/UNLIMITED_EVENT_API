@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="fruitizzadmin-001-site4" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\PROFESSIONNEL\\PROJETS\\SIMPLE\ IT\\UNLIMITED\ EVENT\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API\\obj\\Release\\net5\.0\\PubTmp\\Out\\$" />
+  </parameter>
+</parameters>
