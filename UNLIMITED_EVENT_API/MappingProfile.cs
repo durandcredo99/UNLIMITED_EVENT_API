@@ -60,7 +60,11 @@ namespace UNLIMITED_EVENT_API
             CreateMap<Workstation, WorkstationResponse>().ReverseMap();
             CreateMap<WorkstationRequest, Workstation>().ReverseMap();
 
+            CreateMap<Partner, PartnerResponse>().ReverseMap();
+            CreateMap<PartnerRequest, Partner>().ReverseMap();
 
+            CreateMap<Rate, RateResponse>().ReverseMap();
+            CreateMap<RateRequest, Rate>().ReverseMap();
             //CreateMap<University, UniversityResponse>()
             //    .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 

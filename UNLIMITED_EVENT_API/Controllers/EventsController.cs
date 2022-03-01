@@ -38,7 +38,7 @@ namespace UNLIMITED_EVENT_API.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<EventResponse>>> GetEvents([FromQuery] EventParameters eventParameters)
+        public async Task<ActionResult<IEnumerable<EventResponse>>> GetEvents([FromQuery] EventQueryParameters eventParameters)
         {
            
             var events = await _repository.Event.GetEventsAsync(eventParameters);

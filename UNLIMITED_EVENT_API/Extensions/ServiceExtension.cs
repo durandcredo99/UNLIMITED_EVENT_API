@@ -86,6 +86,8 @@ namespace UNLIMITED_EVENT_API.Extensions
             services.AddScoped<ISortHelper<PaymentType>, SortHelper<PaymentType>>();
             services.AddScoped<ISortHelper<Place>, SortHelper<Place>>();
             services.AddScoped<ISortHelper<Sponsor>, SortHelper<Sponsor>>();
+            services.AddScoped<ISortHelper<Partner>, SortHelper<Partner>>();
+            services.AddScoped<ISortHelper<Rate>, SortHelper<Rate>>();
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
         }
 
@@ -179,6 +181,14 @@ namespace UNLIMITED_EVENT_API.Extensions
                 option.AddPolicy("readPartnerPolicy", policy => policy.RequireClaim("readPartner"));
                 option.AddPolicy("writePartnerPolicy", policy => policy.RequireClaim("writePartner"));
                 option.AddPolicy("managePartnerPolicy", policy => policy.RequireClaim("managePartner"));
+
+                option.AddPolicy("readRatePolicy", policy => policy.RequireClaim("readRate"));
+                option.AddPolicy("writeRatePolicy", policy => policy.RequireClaim("writeRate"));
+                option.AddPolicy("manageRatePolicy", policy => policy.RequireClaim("manageRate"));
+
+                option.AddPolicy("readSponsorPolicy", policy => policy.RequireClaim("readSponsor"));
+                option.AddPolicy("writeSponsorPolicy", policy => policy.RequireClaim("writeSponsor"));
+                option.AddPolicy("manageSponsorPolicy", policy => policy.RequireClaim("manageSponsor"));
 
                 option.AddPolicy("readPaymentPolicy", policy => policy.RequireClaim("readPayment"));
                 option.AddPolicy("writePaymentPolicy", policy => policy.RequireClaim("writePayment"));
