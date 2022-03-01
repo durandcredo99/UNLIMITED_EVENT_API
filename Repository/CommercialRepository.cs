@@ -80,7 +80,14 @@ namespace Repository
         #region ApplyFilters and PerformSearch Region
         private void ApplyFilters(ref IQueryable<Commercial> commercials, CommercialParameters commercialParameters)
         {
-            commercials = FindAll();
+            commercials = FindAll()
+                .Include(x => x.SubCategory);
+
+            if (commercialParameters.OfSubCategoryId != null && commercialParameters.OfSubCategoryId != new Guid())
+            {
+                commercials = commercials.Where(x => x.SubCategoryId == commercialParameters.OfSubCategoryId);
+            }
+
             /*
             if (!string.IsNullOrWhiteSpace(commercialParameters.AppUserId))
             {

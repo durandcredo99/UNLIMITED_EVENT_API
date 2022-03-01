@@ -47,7 +47,7 @@ namespace Entities.Models
 
                 context.Roles.Add(AdminRole);
 
-                ClaimsStore.AllClaims.ForEach(claim =>
+                ClaimsStore.AdministratorClaims.ForEach(claim =>
                 {
                     var claimWrapper = new ClaimWrapper();
                     claimWrapper.RoleId = AdminRole.Id;
@@ -69,7 +69,7 @@ namespace Entities.Models
 
                 context.Roles.Add(AdminRole);
 
-                ClaimsStore.AllClaims.ForEach(claim =>
+                ClaimsStore.ClientClaims.ForEach(claim =>
                 {
                     var claimWrapper = new ClaimWrapper();
                     claimWrapper.RoleId = AdminRole.Id;
@@ -91,7 +91,7 @@ namespace Entities.Models
 
                 context.Roles.Add(AdminRole);
 
-                ClaimsStore.AllClaims.ForEach(claim =>
+                ClaimsStore.OrganisatorClaims.ForEach(claim =>
                 {
                     var claimWrapper = new ClaimWrapper();
                     claimWrapper.RoleId = AdminRole.Id;

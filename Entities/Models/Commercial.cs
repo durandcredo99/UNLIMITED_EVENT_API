@@ -20,5 +20,12 @@ namespace Entities.Models
         public string Description { get; set; }
         [Required]
         public string Lieu { get; set; }
+        public int Number { get; set; }
+
+        [Required]
+        public Guid SubCategoryId { get; set; }
+
+        [ForeignKey("SubCategoryId")]
+        public SubCategory SubCategory { get; set; }
     }
 }

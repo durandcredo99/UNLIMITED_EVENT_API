@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "ae443d68-028d-4261-aa13-1166dd61848b": {
+      "ProjectGuid": "ae443d68-028d-4261-aa13-1166dd61848b",
+      "DisplayName": "Repository",
+      "ColorIndex": 0
+    },
+    "391abe3b-2087-497a-b0ff-f58f300e7418": {
+      "ProjectGuid": "391abe3b-2087-497a-b0ff-f58f300e7418",
+      "DisplayName": "UNLIMITED_EVENT_API",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

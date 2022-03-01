@@ -12,6 +12,7 @@ namespace Entities.RequestFeatures
             //OrderBy = "name";
             OrderBy = "title";
         }
+        public Guid? OfSubCategoryId { get; set; }
 
     }
 }

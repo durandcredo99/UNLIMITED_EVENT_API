@@ -11,22 +11,38 @@ namespace Entities.Models
     public class Payment : IEntity
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public float AmountPaid { get; set; }
-        public float AmountRest { get; set; }
-        public DateTime? PaymentDate { get; set; }
-
         [Required]
-        public Guid PaymentTypeId { get; set; }
+        public string AppUserId { get; set; }
+        public float MoneyAmount { get; set; }
+        public float RemainingAmount { get; set; }
+        public DateTime? PaidAt { get; set; }
 
-        [ForeignKey("PaymentTypeId")]
-        public PaymentType PaymentType { get; set; }
-
+        public string Feda_Klass { get; set; }
+        public string Feda_Id { get; set; }
+        public string Feda_Amount { get; set; }
+        public string Feda_Description { get; set; }
+        public string Feda_CallbackUrl { get; set; }
+        public string Feda_Status { get; set; }
+        public string Feda_Customer_id { get; set; }
+        public string Feda_Currency_id { get; set; }
+        public string Feda_Mode { get; set; }
         [Required]
-        public Guid CommandId { get; set; }
+        public Guid OrderId { get; set; }
 
-        [ForeignKey("CommandId")]
-        public Command Command { get; set; }
+        [ForeignKey("OrderId")]
+        public virtual Order Order { get; set; }
 
+        public Guid PromoteId { get; set; }
+
+        [ForeignKey("PromoteId")]
+        public virtual Promote Promote { get; set; }
+
+        public Guid PromoteEventId { get; set; }
+
+        [ForeignKey("PromoteEventId")]
+        public virtual PromoteEvent PromoteEvent { get; set; }
+
+        [ForeignKey("AppUserId")]
+        public virtual AppUser AppUser { get; set; }
     }
 }

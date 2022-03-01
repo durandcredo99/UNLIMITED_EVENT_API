@@ -26,7 +26,7 @@ namespace Repository
             _sortHelper = sortHelper;
         }
 
-        public async Task<PagedList<Event>> GetEventsAsync(EventParameters eventParameters)
+        public async Task<PagedList<Event>> GetEventsAsync(EventQueryParameters eventParameters)
         {
             var events = Enumerable.Empty<Event>().AsQueryable();
 
@@ -48,6 +48,7 @@ namespace Repository
         public async Task<Event> GetEventByIdAsync(Guid id)
         {
             return await FindByCondition(_event => _event.Id.Equals(id))
+                .Include(x=>x.Places)
                 .FirstOrDefaultAsync();
         }
 
@@ -71,6 +72,10 @@ namespace Repository
         {
             await UpdateAsync(events);
         }
+        public async Task<int> CountEventsAsync()
+        {
+            return await FindAll().CountAsync();
+        }
 
         public async Task DeleteEventAsync(Event _event)
         {
@@ -78,35 +83,28 @@ namespace Repository
         }
 
         #region ApplyFilters and PerformSearch Region
-        private void ApplyFilters(ref IQueryable<Event> events, EventParameters eventParameters)
+        private void ApplyFilters(ref IQueryable<Event> events, EventQueryParameters eventQueryParameters)
         {
-            events = FindAll();
-            /*
-            if (!string.IsNullOrWhiteSpace(eventParameters.AppUserId))
+            events = FindAll()
+                .Include(x=>x.Places).ThenInclude(x => x.Order)
+                .Include(x=>x.Category)
+                .Include(x=>x.Sponsor)
+                .Include(x=>x.AppUser);
+
+            if (eventQueryParameters.OfCategoryId != null && eventQueryParameters.OfCategoryId != new Guid())
             {
-                events = events.Where(x => x.AppUserId == eventParameters.AppUserId);
+                events = events.Where(x => x.CategoryId == eventQueryParameters.OfCategoryId);
             }
 
-            if (eventParameters.MinBirthday != null)
+            if (!string.IsNullOrWhiteSpace(eventQueryParameters.OrganizedBy))
             {
-                events = events.Where(x => x.Birthday >= eventParameters.MinBirthday);
+                events = events.Where(x => x.AppUserId == eventQueryParameters.OrganizedBy);
             }
 
-            if (eventParameters.MaxBirthday != null)
+            if (eventQueryParameters.PublicOnly)
             {
-                events = events.Where(x => x.Birthday < eventParameters.MaxBirthday);
+                events = events.Where(x => x.IsPublic);
             }
-
-            if (eventParameters.MinCreateAt != null)
-            {
-                events = events.Where(x => x.CreateAt >= eventParameters.MinCreateAt);
-            }
-
-            if (eventParameters.MaxCreateAt != null)
-            {
-                events = events.Where(x => x.CreateAt < eventParameters.MaxCreateAt);
-            }
-            */
         }
 
         private void PerformSearch(ref IQueryable<Event> events, string searchTerm)

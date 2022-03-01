@@ -49,6 +49,7 @@ namespace Repository
         public async Task<Place> GetPlaceByIdAsync(Guid id)
         {
             return await FindByCondition(place => place.Id.Equals(id))
+                .Include(x=>x.Order)
                 .FirstOrDefaultAsync();
         }
 
@@ -60,8 +61,12 @@ namespace Repository
 
         public async Task CreatePlaceAsync(Place place)
         {
-           
             await CreateAsync(place);
+        }
+
+        public async Task CreatePlaceAsync(IEnumerable<Place> places)
+        {
+            await CreateAsync(places);
         }
 
         public async Task UpdatePlaceAsync(Place place)
@@ -93,7 +98,14 @@ namespace Repository
         #region ApplyFilters and PerformSearch Region
         private void ApplyFilters(ref IQueryable<Place> places, PlaceParameters placeParameters)
         {
-            places = FindAll();
+            places = FindAll()
+                .Include(x=>x.Order);
+
+            if (placeParameters.EventId != null && placeParameters.EventId != new Guid())
+            {
+                places = places.Where(x => x.EventId == placeParameters.EventId);
+            }
+
             /*
             if (!string.IsNullOrWhiteSpace(placeParameters.AppUserId))
             {

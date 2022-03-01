@@ -1,4 +1,5 @@
 ﻿
+using Entities.DataTransfertObjects;
 using Entities.Models;
 using Entities.RequestFeatures;
 using System;
@@ -17,6 +18,7 @@ namespace Contracts
         Task<int> getNextNumber();
 
         Task CreatePlaceAsync(Place place);
+        Task CreatePlaceAsync(IEnumerable<Place> places);
         Task UpdatePlaceAsync(Place place);
         Task UpdatePlaceAsync(IEnumerable<Place> places);
         Task DeletePlaceAsync(Place place);

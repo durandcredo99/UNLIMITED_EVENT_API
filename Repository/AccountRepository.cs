@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Entities;
+using Entities.DataTransfertObjects;
 using Entities.Models;
 using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Authentication;
@@ -17,6 +18,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Repository
 {
@@ -114,15 +116,15 @@ namespace Repository
 
         public async Task<string> EncodeTokenAsync(string token)
         {
-            var encodedEmailToken = await Task.Run(()=>Encoding.UTF8.GetBytes(token));
-            return await Task.Run(()=> WebEncoders.Base64UrlEncode(encodedEmailToken));
+            var encodedEmailToken = await Task.Run(() => Encoding.UTF8.GetBytes(token));
+            return await Task.Run(() => WebEncoders.Base64UrlEncode(encodedEmailToken));
         }
 
 
         public async Task<string> DecodeTokenAsync(string encodedToken)
         {
-            var decodedToken = await Task.Run(()=> WebEncoders.Base64UrlDecode(encodedToken));
-            return await Task.Run(()=> Encoding.UTF8.GetString(decodedToken));
+            var decodedToken = await Task.Run(() => WebEncoders.Base64UrlDecode(encodedToken));
+            return await Task.Run(() => Encoding.UTF8.GetString(decodedToken));
         }
 
 
@@ -157,7 +159,7 @@ namespace Repository
             {
                 IsSuccess = false,
                 Message = "Email confirmation failed",
-                ErrorDetails = result.Errors.Select(ex=>ex.Description)
+                ErrorDetails = result.Errors.Select(ex => ex.Description)
             };
         }
 
@@ -176,6 +178,20 @@ namespace Repository
                     IsSuccess = false,
                 };
             }
+
+
+            var isEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
+
+            if (!isEmailConfirmed)
+            {
+                return new Authentication
+                {
+                    Message = "Cannot sign in without a confirmed email",
+                    AppUser = user,
+                    IsSuccess = false,
+                };
+            }
+
 
             var resultSucceeded = await _userManager.CheckPasswordAsync(user, password);
 
@@ -206,17 +222,36 @@ namespace Repository
 
             claims.AddRange(await _roleManager.GetClaimsAsync(role));
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["AuthSettings:Key"]));
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-            var token = new JwtSecurityToken(
-                issuer: _configuration["AuthSettings:Issuer"],
-                audience: _configuration["AuthSettings:Audience"],
-                claims: claims,
-                expires: DateTime.Now.AddDays(1),
-                signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
-                );
 
-            string tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+            var authProperties = new AuthenticationProperties
+            {
+                //AllowRefresh = <bool>,
+                // Refreshing the authentication session should be allowed.
+
+                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(1),
+                // The time at which the authentication ticket expires. A 
+                // value set here overrides the ExpireTimeSpan option of 
+                // CookieAuthenticationOptions set with AddCookie.
+
+                IsPersistent = true,
+                // Whether the authentication session is persisted across 
+                // multiple requests. When used with cookies, controls
+                // whether the cookie's lifetime is absolute (matching the
+                // lifetime of the authentication ticket) or session-based.
+
+                //IssuedUtc = <DateTimeOffset>,
+                // The time at which the authentication ticket was issued.
+
+                //RedirectUri = <string>
+                // The full path or absolute URI to be used as an http 
+                // redirect response value.
+            };
+
+            await _httpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+
+            // cookieSignIn
 
             var userInfo = user.ToDictionary();
 
@@ -224,9 +259,7 @@ namespace Repository
             {
                 UserInfo = userInfo,
                 AppUser = user,
-                Token = tokenString,
                 IsSuccess = true,
-                ExpireDate = token.ValidTo,
             };
         }
 
@@ -264,7 +297,7 @@ namespace Repository
         }
 
 
-        public async Task<Authentication> ResetPasswordAsync(ResetPassword model)
+        public async Task<Authentication> ResetPasswordAsync(ResetPasswordViewModel model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user == null)
@@ -293,7 +326,7 @@ namespace Repository
             {
                 IsSuccess = false,
                 Message = "Something went wrong",
-                ErrorDetails = result.Errors.Select(e=>e.Description),
+                ErrorDetails = result.Errors.Select(e => e.Description),
             };
         }
 
@@ -362,6 +395,26 @@ namespace Repository
         {
             return await (Task.Run(() => _userManager.GetUserId(user)));
             //return await _userManager.GetUserIdAsync(user);
+        }
+
+        public async Task<AppUser> FindByEmailAsync(string email)
+        {
+            return await _userManager.FindByEmailAsync(email);
+        }
+
+        public async Task<string> GeneratePasswordResetTokenAsync(AppUser appUser)
+        {
+            return await _userManager.GeneratePasswordResetTokenAsync(appUser);
+        }
+
+        public async Task<IdentityResult> ResetPasswordAsync(AppUser appUser, string token, string password)
+        {
+            return await _userManager.ResetPasswordAsync(appUser, token, password);
+        }
+
+        public async Task<bool> IsEmailConfirmedAsync(AppUser appUser)
+        {
+            return await _userManager.IsEmailConfirmedAsync(appUser);
         }
     }
 

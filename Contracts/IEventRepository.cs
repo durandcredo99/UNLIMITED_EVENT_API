@@ -9,7 +9,7 @@ namespace Contracts
 {
     public interface IEventRepository
     {
-        Task<PagedList<Event>> GetEventsAsync(EventParameters eventParameters);
+        Task<PagedList<Event>> GetEventsAsync(EventQueryParameters eventParameters);
 
         Task<Event> GetEventByIdAsync(Guid id);
         Task<bool> EventExistAsync(Event _event);
@@ -18,5 +18,7 @@ namespace Contracts
         Task UpdateEventAsync(Event _event);
         Task UpdateEventAsync(IEnumerable<Event> events);
         Task DeleteEventAsync(Event _event);
+        Task<int> CountEventsAsync();
+
     }
 }

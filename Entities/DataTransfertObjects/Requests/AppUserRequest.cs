@@ -1,4 +1,5 @@
 ﻿using Entities.Extensions;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,6 +13,8 @@ namespace Entities.DataTransfertObjects
     public class AppUserRequest
     {
         public Guid? Id { get; set; }
+        public string NameOrganization { get; set; }
+        public int Phone { get; set; }
         [Required]
         public string Firstname { get; set; }
         [Required]
@@ -19,7 +22,8 @@ namespace Entities.DataTransfertObjects
         public string Gender { get; set; }
         public DateTime? Birthday { get; set; }
         public string WorkstationName { get; set; }
-        
+        public string WorkstationId { get; set; }
+       
         [Required]
         [EmailAddress]
         public string Email { get; set; }
@@ -31,5 +35,6 @@ namespace Entities.DataTransfertObjects
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
     }
 }

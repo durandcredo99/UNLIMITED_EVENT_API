@@ -14,8 +14,8 @@ namespace Entities.DataTransfertObjects
     {
         public Guid? Id { get; set; }
 
-        [Required]
         public string ImgLink { get; set; }
+
         [Required]
         public string Title { get; set; }
         [Required]
@@ -23,6 +23,10 @@ namespace Entities.DataTransfertObjects
         [Required]
         public string Lieu { get; set; }
         public IFormFile File { get; set; }
+        public int Number { get; set; }
+
+        [Required]
+        public Guid SubCategoryId { get; set; }
 
     }
 }

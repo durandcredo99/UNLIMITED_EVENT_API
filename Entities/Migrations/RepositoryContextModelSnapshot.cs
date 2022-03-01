@@ -16,7 +16,7 @@ namespace Entities.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.11")
+                .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Entities.Models.AppUser", b =>
@@ -65,6 +65,9 @@ namespace Entities.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("NameOrganization")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -75,6 +78,9 @@ namespace Entities.Migrations
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Phone")
+                        .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
@@ -106,6 +112,30 @@ namespace Entities.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Entities.Models.Banner", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ImgLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("No")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Surtitre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Titre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Banners");
                 });
 
             modelBuilder.Entity("Entities.Models.Blog", b =>
@@ -181,26 +211,6 @@ namespace Entities.Migrations
                     b.ToTable("CategoriesBlog");
                 });
 
-            modelBuilder.Entity("Entities.Models.Command", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("AppUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.ToTable("Commands");
-                });
-
             modelBuilder.Entity("Entities.Models.Comment", b =>
                 {
                     b.Property<Guid>("Id")
@@ -241,11 +251,19 @@ namespace Entities.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("SubCategoryId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SubCategoryId");
 
                     b.ToTable("Commercials");
                 });
@@ -276,18 +294,21 @@ namespace Entities.Migrations
                     b.Property<bool>("IsPublic")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Lieu")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("NbrPlace")
+                        .HasColumnType("int");
+
                     b.Property<int>("NoPriority")
                         .HasColumnType("int");
 
-                    b.Property<int>("NoTicket")
-                        .HasColumnType("int");
-
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
+                    b.Property<long>("Price")
+                        .HasColumnType("bigint");
 
                     b.Property<Guid>("SponsorId")
                         .HasColumnType("uniqueidentifier");
@@ -306,54 +327,134 @@ namespace Entities.Migrations
                     b.ToTable("Events");
                 });
 
+            modelBuilder.Entity("Entities.Models.EventYear", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("EndingDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("Percentage")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("StartingDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EventYears");
+                });
+
+            modelBuilder.Entity("Entities.Models.Order", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("Entities.Models.Partner", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ImgLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Partners");
+                });
+
             modelBuilder.Entity("Entities.Models.Payment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<float>("AmountPaid")
-                        .HasColumnType("real");
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<float>("AmountRest")
-                        .HasColumnType("real");
-
-                    b.Property<Guid>("CommandId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("Feda_Amount")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("PaymentDate")
+                    b.Property<string>("Feda_CallbackUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Feda_Currency_id")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Feda_Customer_id")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Feda_Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Feda_Id")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Feda_Klass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Feda_Mode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Feda_Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("MoneyAmount")
+                        .HasColumnType("real");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("PaidAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("PaymentTypeId")
+                    b.Property<Guid>("PromoteEventId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PromoteId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<float>("RemainingAmount")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CommandId");
+                    b.HasIndex("AppUserId");
 
-                    b.HasIndex("PaymentTypeId");
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("PromoteEventId");
+
+                    b.HasIndex("PromoteId");
 
                     b.ToTable("Payments");
-                });
-
-            modelBuilder.Entity("Entities.Models.PaymentType", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PaymentTypes");
                 });
 
             modelBuilder.Entity("Entities.Models.Place", b =>
@@ -362,25 +463,82 @@ namespace Entities.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CommandId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("EventId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NoPlace")
                         .HasColumnType("int");
 
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
+                    b.Property<Guid?>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<long>("Price")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CommandId");
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("Places");
+                });
+
+            modelBuilder.Entity("Entities.Models.Promote", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<long>("Amount")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Position")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Promotes");
+                });
+
+            modelBuilder.Entity("Entities.Models.PromoteEvent", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("EventId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PromoteId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("StartingDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("duration")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("EventId");
 
-                    b.ToTable("Places");
+                    b.HasIndex("PromoteId");
+
+                    b.ToTable("PromoteEvents");
                 });
 
             modelBuilder.Entity("Entities.Models.Sponsor", b =>
@@ -388,6 +546,10 @@ namespace Entities.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImgLink")
                         .IsRequired()
@@ -406,6 +568,24 @@ namespace Entities.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sponsors");
+                });
+
+            modelBuilder.Entity("Entities.Models.SubCategory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SubCategories");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -571,17 +751,6 @@ namespace Entities.Migrations
                     b.Navigation("CategoryBlog");
                 });
 
-            modelBuilder.Entity("Entities.Models.Command", b =>
-                {
-                    b.HasOne("Entities.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-                });
-
             modelBuilder.Entity("Entities.Models.Comment", b =>
                 {
                     b.HasOne("Entities.Models.Blog", "Blog")
@@ -591,6 +760,17 @@ namespace Entities.Migrations
                         .IsRequired();
 
                     b.Navigation("Blog");
+                });
+
+            modelBuilder.Entity("Entities.Models.Commercial", b =>
+                {
+                    b.HasOne("Entities.Models.SubCategory", "SubCategory")
+                        .WithMany("Commercials")
+                        .HasForeignKey("SubCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SubCategory");
                 });
 
             modelBuilder.Entity("Entities.Models.Event", b =>
@@ -620,42 +800,86 @@ namespace Entities.Migrations
                     b.Navigation("Sponsor");
                 });
 
+            modelBuilder.Entity("Entities.Models.Order", b =>
+                {
+                    b.HasOne("Entities.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("Entities.Models.Payment", b =>
                 {
-                    b.HasOne("Entities.Models.Command", "Command")
-                        .WithMany("Payments")
-                        .HasForeignKey("CommandId")
+                    b.HasOne("Entities.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Entities.Models.PaymentType", "PaymentType")
+                    b.HasOne("Entities.Models.Order", "Order")
                         .WithMany("Payments")
-                        .HasForeignKey("PaymentTypeId")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Command");
+                    b.HasOne("Entities.Models.PromoteEvent", "PromoteEvent")
+                        .WithMany()
+                        .HasForeignKey("PromoteEventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("PaymentType");
+                    b.HasOne("Entities.Models.Promote", "Promote")
+                        .WithMany()
+                        .HasForeignKey("PromoteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Promote");
+
+                    b.Navigation("PromoteEvent");
                 });
 
             modelBuilder.Entity("Entities.Models.Place", b =>
                 {
-                    b.HasOne("Entities.Models.Command", "Command")
-                        .WithMany()
-                        .HasForeignKey("CommandId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Entities.Models.Event", "Event")
                         .WithMany("Places")
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Command");
+                    b.HasOne("Entities.Models.Order", "Order")
+                        .WithMany("Places")
+                        .HasForeignKey("OrderId");
 
                     b.Navigation("Event");
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("Entities.Models.PromoteEvent", b =>
+                {
+                    b.HasOne("Entities.Models.Event", "Event")
+                        .WithMany()
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Models.Promote", "Promote")
+                        .WithMany()
+                        .HasForeignKey("PromoteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+
+                    b.Navigation("Promote");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -729,24 +953,26 @@ namespace Entities.Migrations
                     b.Navigation("Blogs");
                 });
 
-            modelBuilder.Entity("Entities.Models.Command", b =>
-                {
-                    b.Navigation("Payments");
-                });
-
             modelBuilder.Entity("Entities.Models.Event", b =>
                 {
                     b.Navigation("Places");
                 });
 
-            modelBuilder.Entity("Entities.Models.PaymentType", b =>
+            modelBuilder.Entity("Entities.Models.Order", b =>
                 {
                     b.Navigation("Payments");
+
+                    b.Navigation("Places");
                 });
 
             modelBuilder.Entity("Entities.Models.Sponsor", b =>
                 {
                     b.Navigation("Events");
+                });
+
+            modelBuilder.Entity("Entities.Models.SubCategory", b =>
+                {
+                    b.Navigation("Commercials");
                 });
 #pragma warning restore 612, 618
         }

@@ -20,20 +20,25 @@ namespace Repository
     {
         private IFileRepository _fileRepository;
         private IAccountRepository _authenticationRepository;
+        private IBannerRepository _bannerRepository;
         private ICategoryBlogRepository _categoryBlogRepository;
         private IBlogRepository _blogRepository;
-        private ICommandRepository _commandRepository;
+        private IOrderRepository _orderRepository;
         private ICommentRepository _commentRepository;
+        private ISubCategoryRepository _subCategoryRepository;
         private ICommercialRepository _commercialRepository;
         private ICategoryRepository _categoryRepository;
         private IEventRepository _eventRepository;
         private IPaymentRepository _paymentRepository;
-        private IPaymentTypeRepository _paymentTypeRepository;
         private IPlaceRepository _placeRepository;
         private ISponsorRepository _sponsorRepository;
+        private IPartnerRepository _partnerRepository;
+        private IPromoteRepository _promoteRepository;
+        private IPromoteEventRepository _promoteEventRepository;
+        private IEventYearRepository _eventYearRepository;
 
         private IAppUserRepository _appUser;
-        private IMailRepository _mail;
+        private IEmailSenderRepository _emailSender;
         private IWebHostEnvironment _webHostEnvironment;
         private IWorkstationRepository _workstation;
 
@@ -41,22 +46,29 @@ namespace Repository
         private IHttpContextAccessor _httpContextAccessor;
         private IOptions<EmailSettings> _emailSettings;
 
+        private readonly ISortHelper<Banner> _bannerSortHelper;
         private readonly ISortHelper<CategoryBlog> _categoryBlogSortHelper;
         private readonly ISortHelper<Blog> _blogSortHelper;
-        private readonly ISortHelper<Command> _commandSortHelper;
+        private readonly ISortHelper<Order> _orderSortHelper;
         private readonly ISortHelper<Comment> _commentSortHelper;
+        private readonly ISortHelper<SubCategory> _subCategorySortHelper;
         private readonly ISortHelper<Commercial> _commercialSortHelper;
         private readonly ISortHelper<Category> _categorySortHelper;
         private readonly ISortHelper<Event> _eventSortHelper;
         private readonly ISortHelper<Payment> _paymentSortHelper;
-        private readonly ISortHelper<PaymentType> _paymentTypeSortHelper;
         private readonly ISortHelper<Place> _placeSortHelper;
         private readonly ISortHelper<Sponsor> _sponsorSortHelper;
+        private readonly ISortHelper<Partner> _partnerSortHelper;
+        private readonly ISortHelper<Promote> _promoteSortHelper;
+        private readonly ISortHelper<PromoteEvent> _promoteEventSortHelper;
+        private readonly ISortHelper<EventYear> _eventYearSortHelper;
+        private readonly ISortHelper<Workstation> _workstationSortHelper;
 
 
         private RepositoryContext _repoContext;
         private UserManager<AppUser> _userManager;
         private RoleManager<Workstation> _roleManager;
+        private readonly EmailConfiguration _emailConfig;
 
         private string filePath;
         public string Path
@@ -87,6 +99,17 @@ namespace Repository
                 return _authenticationRepository;
             }
         }
+        public IBannerRepository Banner
+        {
+            get
+            {
+                if (_bannerRepository == null)
+                {
+                    _bannerRepository = new BannerRepository(_repoContext, _bannerSortHelper);
+                }
+                return _bannerRepository;
+            }
+        }
         public ICategoryBlogRepository CategoryBlog
         {
             get
@@ -111,15 +134,15 @@ namespace Repository
             }
         }
 
-        public ICommandRepository Command
+        public IOrderRepository Order
         {
             get
             {
-                if (_commandRepository == null)
+                if (_orderRepository == null)
                 {
-                    _commandRepository = new CommandRepository(_repoContext, _commandSortHelper);
+                    _orderRepository = new OrderRepository(_repoContext, _orderSortHelper);
                 }
-                return _commandRepository;
+                return _orderRepository;
             }
         }
 
@@ -132,6 +155,18 @@ namespace Repository
                     _commentRepository = new CommentRepository(_repoContext, _commentSortHelper);
                 }
                 return _commentRepository;
+            }
+        }
+
+        public ISubCategoryRepository SubCategory
+        {
+            get
+            {
+                if (_subCategoryRepository == null)
+                {
+                    _subCategoryRepository = new SubCategoryRepository(_repoContext, _subCategorySortHelper);
+                }
+                return _subCategoryRepository;
             }
         }
 
@@ -182,20 +217,6 @@ namespace Repository
                 return _paymentRepository;
             }
         }
-
-
-        public IPaymentTypeRepository PaymentType
-        {
-            get
-            {
-                if (_paymentTypeRepository == null)
-                {
-                    _paymentTypeRepository = new PaymentTypeRepository(_repoContext, _paymentTypeSortHelper);
-                }
-                return _paymentTypeRepository;
-            }
-        }
-
         public IPlaceRepository Place
         {
             get
@@ -208,6 +229,53 @@ namespace Repository
             }
         }
 
+       public IPartnerRepository Partner
+        {
+            get
+            {
+                if (_partnerRepository == null)
+                {
+                    _partnerRepository = new PartnerRepository(_repoContext, _partnerSortHelper);
+                }
+                return _partnerRepository;
+            }
+        }
+
+        public IPromoteRepository Promote
+        {
+            get
+            {
+                if (_promoteRepository == null)
+                {
+                    _promoteRepository = new PromoteRepository(_repoContext, _promoteSortHelper);
+                }
+                return _promoteRepository;
+            }
+        }
+
+        public IPromoteEventRepository PromoteEvent
+        {
+            get
+            {
+                if (_promoteEventRepository == null)
+                {
+                    _promoteEventRepository = new PromoteEventRepository(_repoContext, _promoteEventSortHelper);
+                }
+                return _promoteEventRepository;
+            }
+        }
+
+        public IEventYearRepository EventYear
+        {
+            get
+            {
+                if (_eventYearRepository == null)
+                {
+                    _eventYearRepository = new EventYearRepository(_repoContext, _eventYearSortHelper);
+                }
+                return _eventYearRepository;
+            }
+        }
 
         public ISponsorRepository Sponsor
         {
@@ -234,17 +302,18 @@ namespace Repository
         }
 
 
-        public IMailRepository Mail
+        public IEmailSenderRepository EmailSender
         {
             get
             {
-                if (_mail == null)
+                if (_emailSender == null)
                 {
-                    _mail = new MailRepository(_emailSettings);
+                    _emailSender = new EmailSenderRepository(_emailConfig);
                 }
-                return _mail;
+                return _emailSender;
             }
         }
+
 
         public IWorkstationRepository Workstation
         {
@@ -252,7 +321,7 @@ namespace Repository
             {
                 if (_workstation == null)
                 {
-                    _workstation = new WorkstationRepository(_repoContext, _roleManager);
+                    _workstation = new WorkstationRepository(_repoContext, _workstationSortHelper, _roleManager);
                 }
                 return _workstation;
             }
@@ -261,24 +330,33 @@ namespace Repository
 
 
 
+
         public RepositoryWrapper(
             UserManager<AppUser> userManager,
             RoleManager<Workstation> roleManager,
             RepositoryContext repositoryContext,
+            EmailConfiguration emailConfig,
             IOptions<EmailSettings> options,
             IWebHostEnvironment webHostEnvironment,
             IConfiguration configuration,
+            ISortHelper<Banner> bannerSortHelper,
             ISortHelper<Category> categorySortHelper,
             ISortHelper<CategoryBlog> categoryBlogSortHelper,
             ISortHelper<Blog> blogSortHelper,
-            ISortHelper<Command> commandSortHelper,
+            ISortHelper<Order> orderSortHelper,
             ISortHelper<Comment> commentSortHelper,
+            ISortHelper<SubCategory> subCategorySortHelper,
             ISortHelper<Commercial> commercialSortHelper,
             ISortHelper<Event> eventSortHelper,
             ISortHelper<Payment> paymentSortHelper,
-            ISortHelper<PaymentType> paymentTypeSortHelper,
             ISortHelper<Place> placeSortHelper,
             ISortHelper<Sponsor> sponsorSortHelper,
+            ISortHelper<Partner> partnerSortHelper,
+            ISortHelper<Promote> promoteSortHelper,
+            ISortHelper<PromoteEvent> promoteEventSortHelper,
+            ISortHelper<EventYear> eventYearSortHelper,
+            ISortHelper<Workstation> workstationSortHelper,
+
             IHttpContextAccessor httpContextAccessor)
         {
             _userManager = userManager;
@@ -286,20 +364,25 @@ namespace Repository
             _configuration = configuration;
             _repoContext = repositoryContext;
 
+            _bannerSortHelper = bannerSortHelper;
             _categorySortHelper = categorySortHelper;
             _categoryBlogSortHelper = categoryBlogSortHelper;
             _blogSortHelper = blogSortHelper;
-            _commandSortHelper = commandSortHelper;
+            _orderSortHelper = orderSortHelper;
             _commentSortHelper = commentSortHelper;
+            _subCategorySortHelper = subCategorySortHelper;
             _commercialSortHelper = commercialSortHelper;
             _eventSortHelper = eventSortHelper;
             _paymentSortHelper = paymentSortHelper;
             _placeSortHelper = placeSortHelper;
-            _paymentTypeSortHelper = paymentTypeSortHelper;
             _sponsorSortHelper = sponsorSortHelper;
-            
+            _partnerSortHelper = partnerSortHelper;
+            _promoteSortHelper = promoteSortHelper;
+            _promoteEventSortHelper = promoteEventSortHelper;
+            _eventYearSortHelper = eventYearSortHelper;
+            _workstationSortHelper = workstationSortHelper;
 
-            _emailSettings = options;
+            _emailConfig = emailConfig;
             _webHostEnvironment = webHostEnvironment;
             _httpContextAccessor = httpContextAccessor;
         }

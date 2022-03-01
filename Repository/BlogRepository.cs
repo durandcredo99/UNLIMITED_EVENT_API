@@ -80,7 +80,18 @@ namespace Repository
         #region ApplyFilters and PerformSearch Region
         private void ApplyFilters(ref IQueryable<Blog> blogs, BlogParameters blogParameters)
         {
-            blogs = FindAll();
+            blogs = FindAll()
+                .Include(x => x.CategoryBlog);
+
+            if (blogParameters.OfCategoryBlogId != null && blogParameters.OfCategoryBlogId != new Guid())
+            {
+                blogs = blogs.Where(x => x.CategoryBlogId == blogParameters.OfCategoryBlogId);
+            }
+
+            if (!string.IsNullOrWhiteSpace(blogParameters.OrganizedBy))
+            {
+                blogs = blogs.Where(x => x.AppUserId == blogParameters.OrganizedBy);
+            }
             /*
             if (!string.IsNullOrWhiteSpace(blogParameters.AppUserId))
             {

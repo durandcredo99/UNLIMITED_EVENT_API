@@ -13,8 +13,8 @@ namespace Entities.RequestFeatures
         {
             OrderBy = "name";
         }
-
-
+        public bool DisplayOrganisatorOnly { get; set; }
+        public string WithRoleName { get; set; }
         public string AppUserId { get; set; }
         public string Gender { get; set; }
         public DateTime? Birthday { get; set; }

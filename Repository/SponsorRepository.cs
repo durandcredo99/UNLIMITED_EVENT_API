@@ -81,32 +81,12 @@ namespace Repository
         private void ApplyFilters(ref IQueryable<Sponsor> sponsors, SponsorParameters sponsorParameters)
         {
             sponsors = FindAll();
-            /*
-            if (!string.IsNullOrWhiteSpace(sponsorParameters.AppUserId))
+
+            if (!string.IsNullOrWhiteSpace(sponsorParameters.AddBy))
             {
-                sponsors = sponsors.Where(x => x.AppUserId == sponsorParameters.AppUserId);
+                sponsors = sponsors.Where(x => x.AppUserId == sponsorParameters.AddBy);
             }
 
-            if (sponsorParameters.MinBirthday != null)
-            {
-                sponsors = sponsors.Where(x => x.Birthday >= sponsorParameters.MinBirthday);
-            }
-
-            if (sponsorParameters.MaxBirthday != null)
-            {
-                sponsors = sponsors.Where(x => x.Birthday < sponsorParameters.MaxBirthday);
-            }
-
-            if (sponsorParameters.MinCreateAt != null)
-            {
-                sponsors = sponsors.Where(x => x.CreateAt >= sponsorParameters.MinCreateAt);
-            }
-
-            if (sponsorParameters.MaxCreateAt != null)
-            {
-                sponsors = sponsors.Where(x => x.CreateAt < sponsorParameters.MaxCreateAt);
-            }
-            */
         }
 
         private void PerformSearch(ref IQueryable<Sponsor> sponsors, string searchTerm)

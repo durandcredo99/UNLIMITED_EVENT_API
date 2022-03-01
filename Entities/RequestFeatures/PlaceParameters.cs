@@ -11,6 +11,6 @@ namespace Entities.RequestFeatures
         {
             OrderBy = "name";
         }
-
+        public Guid? EventId { get; set; }
     }
 }

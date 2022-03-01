@@ -13,18 +13,20 @@ namespace Entities.Models
 
         public Guid Id { get; set; }
         public int NoPlace { get; set; }
-        public float Price { get; set; }
+        public long Price { get; set; }
+        public string Name { get; set; }
+        public string Status { get; set; }
+      
         [Required]
         public Guid EventId { get; set; }
 
         [ForeignKey("EventId")]
         public Event Event { get; set; }
 
-        [Required]
-        public Guid CommandId { get; set; }   
+        public Guid? OrderId { get; set; }   
 
-        [ForeignKey("CommandId")]
-        public Command Command { get; set; }
+        [ForeignKey("OrderId")]
+        public Order Order { get; set; }
 
     }
 }

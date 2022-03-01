@@ -15,6 +15,8 @@ namespace Entities.Models
         }
 
         public string ImgLink { get; set; }
+        public string NameOrganization { get; set; }
+        public int Phone { get; set; }
         [Required]
         public string Firstname { get; set; }
         [Required]

@@ -11,14 +11,18 @@ namespace Entities.DataTransfertObjects
 {
     public class PlaceRequest
     {
+        public Guid? Id { get; set; }
+        [Display(Name = "Numéro de place")]
         public int NoPlace { get; set; }
-        public float Price { get; set; }
-
+        [Display(Name = "Prix")]
+        public long Price { get; set; }
+        [Display(Name = "Nom")]
+        public string Name { get; set; }
+        public string Status { get; set; }
         [Required]
         public Guid EventId { get; set; }
 
-        [Required]
-        public Guid CommandId { get; set; }
+        public Guid? OrderId { get; set; }
 
     }
 }

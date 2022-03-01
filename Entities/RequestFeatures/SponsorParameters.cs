@@ -11,6 +11,7 @@ namespace Entities.RequestFeatures
         {
             OrderBy = "name";
         }
+        public string AddBy { get; set; }
 
     }
 }

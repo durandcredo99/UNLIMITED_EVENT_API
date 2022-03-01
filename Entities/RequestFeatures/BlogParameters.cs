@@ -9,9 +9,9 @@ namespace Entities.RequestFeatures
     {
         public BlogParameters()
         {
-            //OrderBy = "name";
             OrderBy = "title";
         }
-
+        public Guid? OfCategoryBlogId { get; set; }
+        public string OrganizedBy { get; set; }
     }
 }

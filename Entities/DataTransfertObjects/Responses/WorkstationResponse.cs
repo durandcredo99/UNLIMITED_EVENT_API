@@ -14,6 +14,7 @@ namespace Entities.DataTransfertObjects
         public string NormalizedName { get; set; }
         public string ConcurrencyStamp { get; set; }
 
-
+        public IList<ClaimResponse> Claims { get; set; }
+        public virtual AppUserResponse[] AppUsers { get; set; }
     }
 }

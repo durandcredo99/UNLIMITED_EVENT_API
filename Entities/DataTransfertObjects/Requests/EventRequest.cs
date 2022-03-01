@@ -1,5 +1,6 @@
 ﻿using Entities.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,6 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Entities.DataTransfertObjects
@@ -14,28 +16,41 @@ namespace Entities.DataTransfertObjects
     public class EventRequest
     {
         public Guid? Id { get; set; }
+        public IFormFile EventImg { get; set; }
         public string ImgLink { get; set; }
+
         [Required]
+        [Display(Name = "Nom")]
         public string Name { get; set; }
         public string Description { get; set; }
         [Required]
-        public DateTime Date { get; set; }
+        [BindProperty, DataType(DataType.DateTime)]
+        //public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime Date { get; set; } = DateTime.Today;
         [Required]
-        public float Price { get; set; }
+        [Display(Name = "Prix")]
+        public long Price { get; set; }
         [Required]
+        [Display(Name = "Public ou Privée")]
         public bool IsPublic { get; set; }
+        [Display(Name = "Statut")]
         public string StatusEvent { get; set; }
         [Required]
-        public int NoTicket { get; set; }
+        [Display(Name = "Places")]
+        public int NbrPlace { get; set; }
         public int NoPriority { get; set; }
 
         [Required]
         public Guid CategoryId { get; set; }
 
+        //[JsonIgnore]
         [Required]
-        public String UsersId { get; set; }
+        public string AppUserId { get; set; }
 
         public Guid SponsorId { get; set; }
         public IFormFile File { get; set; }
+
+        public string Lieu { get; set; }
+       
     }
 }

@@ -24,12 +24,13 @@ namespace Entities.Models
         [Required]
         public DateTime Date { get; set; }
         [Required]
-        public float Price { get; set; }
+        public long Price { get; set; }
         [Required]
         public bool IsPublic { get; set; }
         public string StatusEvent { get; set; }
         [Required]
-        public int NoTicket { get; set; }
+        public int NbrPlace { get; set; }
+        public string Lieu { get; set; }
         public int NoPriority { get; set; }
 
         [Required]

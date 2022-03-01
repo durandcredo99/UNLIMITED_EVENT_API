@@ -53,7 +53,7 @@ namespace Repository
 
         public async Task<bool> PaymentExistAsync(Payment payment)
         {
-            return await FindByCondition(x => x.Name == payment.Name)
+            return await FindByCondition(x => x.MoneyAmount == payment.MoneyAmount)
                 .AnyAsync();
         }
 
@@ -113,7 +113,7 @@ namespace Repository
         {
             if (!payments.Any() || string.IsNullOrWhiteSpace(searchTerm)) return;
 
-            payments = payments.Where(x => x.Name.ToLower().Contains(searchTerm.Trim().ToLower()));
+            //payments = payments.Where(x => x.Name.ToLower().Contains(searchTerm.Trim().ToLower()));
         }
 
         #endregion

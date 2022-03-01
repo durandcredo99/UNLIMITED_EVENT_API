@@ -26,5 +26,7 @@ namespace Entities.Models
 
         public virtual ICollection<Event> Events { get; set; }
 
+        [Required]
+        public string AppUserId { get; set; }
     }
 }
