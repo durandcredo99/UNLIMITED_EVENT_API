@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Entities.Migrations
 {
-    public partial class init : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,6 +28,8 @@ namespace Entities.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ImgLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NameOrganization = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Phone = table.Column<int>(type: "int", nullable: false),
                     Firstname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -52,6 +54,21 @@ namespace Entities.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Banners",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    No = table.Column<int>(type: "int", nullable: false),
+                    ImgLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Surtitre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Titre = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Banners", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -108,19 +125,6 @@ namespace Entities.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PaymentTypes",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PaymentTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Promotes",
                 columns: table => new
                 {
@@ -142,7 +146,8 @@ namespace Entities.Migrations
                     ImgLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsPublic = table.Column<bool>(type: "bit", nullable: false),
-                    PhoneSponsor = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    PhoneSponsor = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AppUserId = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -274,7 +279,8 @@ namespace Entities.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -367,6 +373,7 @@ namespace Entities.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Lieu = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Number = table.Column<int>(type: "int", nullable: false),
                     SubCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -376,35 +383,6 @@ namespace Entities.Migrations
                         name: "FK_Commercials_SubCategories_SubCategoryId",
                         column: x => x.SubCategoryId,
                         principalTable: "SubCategories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Payments",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AmountPaid = table.Column<float>(type: "real", nullable: false),
-                    AmountRest = table.Column<float>(type: "real", nullable: false),
-                    PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    PaymentTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    OrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Payments", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Payments_Orders_OrderId",
-                        column: x => x.OrderId,
-                        principalTable: "Orders",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Payments_PaymentTypes_PaymentTypeId",
-                        column: x => x.PaymentTypeId,
-                        principalTable: "PaymentTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -437,6 +415,7 @@ namespace Entities.Migrations
                     NoPlace = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<long>(type: "bigint", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EventId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     OrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
@@ -465,7 +444,8 @@ namespace Entities.Migrations
                     StartingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     duration = table.Column<int>(type: "int", nullable: false),
                     EventId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PromoteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    PromoteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AppUserId = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -482,6 +462,57 @@ namespace Entities.Migrations
                         principalTable: "Promotes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Payments",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    MoneyAmount = table.Column<float>(type: "real", nullable: false),
+                    RemainingAmount = table.Column<float>(type: "real", nullable: false),
+                    PaidAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Feda_Klass = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Feda_Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Feda_Amount = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Feda_Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Feda_CallbackUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Feda_Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Feda_Customer_id = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Feda_Currency_id = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Feda_Mode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    PromoteId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    PromoteEventId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Payments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Payments_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Payments_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Payments_PromoteEvents_PromoteEventId",
+                        column: x => x.PromoteEventId,
+                        principalTable: "PromoteEvents",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Payments_Promotes_PromoteId",
+                        column: x => x.PromoteId,
+                        principalTable: "Promotes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -564,14 +595,24 @@ namespace Entities.Migrations
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Payments_AppUserId",
+                table: "Payments",
+                column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Payments_OrderId",
                 table: "Payments",
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Payments_PaymentTypeId",
+                name: "IX_Payments_PromoteEventId",
                 table: "Payments",
-                column: "PaymentTypeId");
+                column: "PromoteEventId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Payments_PromoteId",
+                table: "Payments",
+                column: "PromoteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Places_EventId",
@@ -612,6 +653,9 @@ namespace Entities.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Banners");
+
+            migrationBuilder.DropTable(
                 name: "Comments");
 
             migrationBuilder.DropTable(
@@ -630,9 +674,6 @@ namespace Entities.Migrations
                 name: "Places");
 
             migrationBuilder.DropTable(
-                name: "PromoteEvents");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
@@ -642,19 +683,19 @@ namespace Entities.Migrations
                 name: "SubCategories");
 
             migrationBuilder.DropTable(
-                name: "PaymentTypes");
+                name: "PromoteEvents");
 
             migrationBuilder.DropTable(
                 name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "CategoriesBlog");
 
             migrationBuilder.DropTable(
                 name: "Events");
 
             migrationBuilder.DropTable(
                 name: "Promotes");
-
-            migrationBuilder.DropTable(
-                name: "CategoriesBlog");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

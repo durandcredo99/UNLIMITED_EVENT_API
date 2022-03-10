@@ -2,21 +2,22 @@
 
 namespace Entities.Migrations
 {
-    public partial class OrderDbLocal : Migration
+    public partial class Fieldtotaladdedtoorder : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "StatusOrder",
+            migrationBuilder.AddColumn<long>(
+                name: "Total",
                 table: "Orders",
-                type: "nvarchar(max)",
-                nullable: true);
+                type: "bigint",
+                nullable: false,
+                defaultValue: 0L);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "StatusOrder",
+                name: "Total",
                 table: "Orders");
         }
     }

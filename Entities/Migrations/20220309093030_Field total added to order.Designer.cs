@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entities.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20220215135606_Bonplan")]
-    partial class Bonplan
+    [Migration("20220309093030_Field total added to order")]
+    partial class Fieldtotaladdedtoorder
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,6 +67,9 @@ namespace Entities.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("NameOrganization")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -77,6 +80,9 @@ namespace Entities.Migrations
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Phone")
+                        .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
@@ -356,6 +362,12 @@ namespace Entities.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("Total")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
@@ -422,7 +434,7 @@ namespace Entities.Migrations
                     b.Property<float>("MoneyAmount")
                         .HasColumnType("real");
 
-                    b.Property<Guid>("OrderId")
+                    b.Property<Guid?>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("PaidAt")
@@ -431,7 +443,7 @@ namespace Entities.Migrations
                     b.Property<Guid>("PromoteEventId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("PromoteId")
+                    b.Property<Guid?>("PromoteId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<float>("RemainingAmount")
@@ -471,6 +483,9 @@ namespace Entities.Migrations
                     b.Property<long>("Price")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EventId");
@@ -506,6 +521,10 @@ namespace Entities.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid>("EventId")
                         .HasColumnType("uniqueidentifier");
 
@@ -532,6 +551,10 @@ namespace Entities.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImgLink")
                         .IsRequired()
@@ -803,9 +826,7 @@ namespace Entities.Migrations
 
                     b.HasOne("Entities.Models.Order", "Order")
                         .WithMany("Payments")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OrderId");
 
                     b.HasOne("Entities.Models.PromoteEvent", "PromoteEvent")
                         .WithMany()
@@ -815,9 +836,7 @@ namespace Entities.Migrations
 
                     b.HasOne("Entities.Models.Promote", "Promote")
                         .WithMany()
-                        .HasForeignKey("PromoteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PromoteId");
 
                     b.Navigation("AppUser");
 
@@ -837,7 +856,7 @@ namespace Entities.Migrations
                         .IsRequired();
 
                     b.HasOne("Entities.Models.Order", "Order")
-                        .WithMany()
+                        .WithMany("Places")
                         .HasForeignKey("OrderId");
 
                     b.Navigation("Event");
@@ -943,6 +962,8 @@ namespace Entities.Migrations
             modelBuilder.Entity("Entities.Models.Order", b =>
                 {
                     b.Navigation("Payments");
+
+                    b.Navigation("Places");
                 });
 
             modelBuilder.Entity("Entities.Models.Sponsor", b =>

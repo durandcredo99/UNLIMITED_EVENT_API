@@ -2,23 +2,23 @@
 
 namespace Entities.Migrations
 {
-    public partial class updateSponsor : Migration
+    public partial class AppUserIdRemovedfromPromoteEvent : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
+            migrationBuilder.DropColumn(
                 name: "AppUserId",
-                table: "Sponsors",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+                table: "PromoteEvents");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
+            migrationBuilder.AddColumn<string>(
                 name: "AppUserId",
-                table: "Sponsors");
+                table: "PromoteEvents",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
         }
     }
 }

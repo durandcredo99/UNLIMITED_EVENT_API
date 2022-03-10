@@ -53,8 +53,7 @@ namespace Repository
 
         public async Task<bool> OrderExistAsync(Order order)
         {
-            return await FindByCondition(x => x.Date == order.Date)
-                .AnyAsync();
+            return false;
         }
 
         public async Task CreateOrderAsync(Order order)

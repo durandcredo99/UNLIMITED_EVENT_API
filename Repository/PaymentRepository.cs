@@ -48,13 +48,13 @@ namespace Repository
         public async Task<Payment> GetPaymentByIdAsync(Guid id)
         {
             return await FindByCondition(payment => payment.Id.Equals(id))
+                .Include(x=>x.AppUser)
                 .FirstOrDefaultAsync();
         }
 
         public async Task<bool> PaymentExistAsync(Payment payment)
         {
-            return await FindByCondition(x => x.MoneyAmount == payment.MoneyAmount)
-                .AnyAsync();
+            return false;
         }
 
         public async Task CreatePaymentAsync(Payment payment)

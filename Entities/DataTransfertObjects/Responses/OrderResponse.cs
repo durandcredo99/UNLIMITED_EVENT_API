@@ -10,6 +10,7 @@ namespace Entities.DataTransfertObjects
     {
         public Guid Id { get; set; }
         public DateTime Date { get; set; }
+        public long Total { get; set; }
         public string Status { get; set; }
         public string AppUserId { get; set; }
         public AppUserResponse AppUser { get; set; }

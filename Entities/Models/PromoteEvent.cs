@@ -28,8 +28,7 @@ namespace Entities.Models
         [ForeignKey("PromoteId")]
         public Promote Promote { get; set; }
 
-
-        [Required]
-        public string AppUserId { get; set; }
+        //[Required]
+        //public string AppUserId { get; set; }
     }
 }

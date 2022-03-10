@@ -18,6 +18,7 @@ namespace Entities.Models
 
         public Guid Id { get; set; }
         public DateTime Date { get; set; }
+        public long Total { get; set; }
         [Required]
         public string AppUserId { get; set; }
         public string Status { get; set; }

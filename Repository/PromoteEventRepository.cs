@@ -93,10 +93,10 @@ namespace Repository
                  .Include(x => x.Event)
                  .Include(x => x.Promote);
 
-            if (!string.IsNullOrWhiteSpace(promoteEventParameters.AddFor))
-            {
-                promoteEvent = promoteEvent.Where(x => x.AppUserId == promoteEventParameters.AddFor);
-            }
+            //if (!string.IsNullOrWhiteSpace(promoteEventParameters.AddFor))
+            //{
+            //    promoteEvent = promoteEvent.Where(x => x.AppUserId == promoteEventParameters.AddFor);
+            //}
             /*
             if (!string.IsNullOrWhiteSpace(promoteEventParameters.AppUserId))
             {

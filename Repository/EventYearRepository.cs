@@ -57,6 +57,16 @@ namespace Repository
                 .AnyAsync();
         }
 
+        public async Task<EventYear> GetOpenEventYearAsync()
+        {
+            /*
+            return await FindByCondition(eventYear => eventYear.IsOpen)
+                .FirstOrDefaultAsync();
+            */
+
+            return await FindAll().FirstOrDefaultAsync();
+        }
+
         public async Task CreateEventYearAsync(EventYear eventYear)
         {
             await CreateAsync(eventYear);

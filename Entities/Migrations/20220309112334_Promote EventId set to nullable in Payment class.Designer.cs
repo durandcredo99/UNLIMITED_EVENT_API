@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entities.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20220301095008_newmigration")]
-    partial class newmigration
+    [Migration("20220309112334_Promote EventId set to nullable in Payment class")]
+    partial class PromoteEventIdsettonullableinPaymentclass
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -365,6 +365,9 @@ namespace Entities.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("Total")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
@@ -431,16 +434,16 @@ namespace Entities.Migrations
                     b.Property<float>("MoneyAmount")
                         .HasColumnType("real");
 
-                    b.Property<Guid>("OrderId")
+                    b.Property<Guid?>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("PaidAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("PromoteEventId")
+                    b.Property<Guid?>("PromoteEventId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("PromoteId")
+                    b.Property<Guid?>("PromoteId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<float>("RemainingAmount")
@@ -823,21 +826,15 @@ namespace Entities.Migrations
 
                     b.HasOne("Entities.Models.Order", "Order")
                         .WithMany("Payments")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OrderId");
 
                     b.HasOne("Entities.Models.PromoteEvent", "PromoteEvent")
                         .WithMany()
-                        .HasForeignKey("PromoteEventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PromoteEventId");
 
                     b.HasOne("Entities.Models.Promote", "Promote")
                         .WithMany()
-                        .HasForeignKey("PromoteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PromoteId");
 
                     b.Navigation("AppUser");
 

@@ -13,6 +13,7 @@ namespace Contracts
 
         Task<EventYear> GetEventYearByIdAsync(Guid id);
         Task<bool> EventYearExistAsync(EventYear rate);
+        Task<EventYear> GetOpenEventYearAsync();
 
         Task CreateEventYearAsync(EventYear rate);
         Task UpdateEventYearAsync(EventYear rate);

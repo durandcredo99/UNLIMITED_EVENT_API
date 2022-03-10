@@ -26,18 +26,18 @@ namespace Entities.Models
         public string Feda_Customer_id { get; set; }
         public string Feda_Currency_id { get; set; }
         public string Feda_Mode { get; set; }
-        [Required]
-        public Guid OrderId { get; set; }
+        
+        public Guid? OrderId { get; set; }
 
         [ForeignKey("OrderId")]
         public virtual Order Order { get; set; }
 
-        public Guid PromoteId { get; set; }
+        public Guid? PromoteId { get; set; }
 
         [ForeignKey("PromoteId")]
         public virtual Promote Promote { get; set; }
 
-        public Guid PromoteEventId { get; set; }
+        public Guid? PromoteEventId { get; set; }
 
         [ForeignKey("PromoteEventId")]
         public virtual PromoteEvent PromoteEvent { get; set; }

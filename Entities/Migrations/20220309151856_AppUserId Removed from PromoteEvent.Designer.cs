@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entities.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20220221110826_updateSponsor")]
-    partial class updateSponsor
+    [Migration("20220309151856_AppUserId Removed from PromoteEvent")]
+    partial class AppUserIdRemovedfromPromoteEvent
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -362,6 +362,12 @@ namespace Entities.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("Total")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
@@ -428,16 +434,16 @@ namespace Entities.Migrations
                     b.Property<float>("MoneyAmount")
                         .HasColumnType("real");
 
-                    b.Property<Guid>("OrderId")
+                    b.Property<Guid?>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("PaidAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("PromoteEventId")
+                    b.Property<Guid?>("PromoteEventId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("PromoteId")
+                    b.Property<Guid?>("PromoteId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<float>("RemainingAmount")
@@ -476,6 +482,9 @@ namespace Entities.Migrations
 
                     b.Property<long>("Price")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -813,21 +822,15 @@ namespace Entities.Migrations
 
                     b.HasOne("Entities.Models.Order", "Order")
                         .WithMany("Payments")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OrderId");
 
                     b.HasOne("Entities.Models.PromoteEvent", "PromoteEvent")
                         .WithMany()
-                        .HasForeignKey("PromoteEventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PromoteEventId");
 
                     b.HasOne("Entities.Models.Promote", "Promote")
                         .WithMany()
-                        .HasForeignKey("PromoteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PromoteId");
 
                     b.Navigation("AppUser");
 
@@ -847,7 +850,7 @@ namespace Entities.Migrations
                         .IsRequired();
 
                     b.HasOne("Entities.Models.Order", "Order")
-                        .WithMany()
+                        .WithMany("Places")
                         .HasForeignKey("OrderId");
 
                     b.Navigation("Event");
@@ -953,6 +956,8 @@ namespace Entities.Migrations
             modelBuilder.Entity("Entities.Models.Order", b =>
                 {
                     b.Navigation("Payments");
+
+                    b.Navigation("Places");
                 });
 
             modelBuilder.Entity("Entities.Models.Sponsor", b =>
