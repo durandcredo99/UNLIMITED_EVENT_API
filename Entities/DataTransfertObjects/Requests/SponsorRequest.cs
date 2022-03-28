@@ -18,8 +18,8 @@ namespace Entities.DataTransfertObjects
         [Display(Name = "Nom")]
         public string Name { get; set; }
         [Required]
-        [Display(Name = "Public ou Privée")]
-        public bool IsPublic { get; set; }
+        [Display(Name = "Statut du sponsor")]
+        public string IsPublic { get; set; }
         [Display(Name = "Numéro de téléphone")]
         public string PhoneSponsor { get; set; }
 

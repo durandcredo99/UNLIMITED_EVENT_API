@@ -27,7 +27,7 @@ namespace Contracts
         IPlaceRepository Place { get; }
         IPromoteRepository Promote { get; }
         IPromoteEventRepository PromoteEvent { get; }
-        IEventYearRepository EventYear { get; }
+        IAnnualRateRepository AnnualRate { get; }
 
         IWorkstationRepository Workstation { get; }
         IEmailSenderRepository EmailSender { get; }

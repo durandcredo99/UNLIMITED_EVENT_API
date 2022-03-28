@@ -9,8 +9,8 @@ namespace Entities.RequestFeatures
     {
         public PaymentParameters()
         {
-            OrderBy = "name";
+            OrderBy = "MoneyAmount";
         }
-
+        public string InvoiceFrom { get; set; }
     }
 }

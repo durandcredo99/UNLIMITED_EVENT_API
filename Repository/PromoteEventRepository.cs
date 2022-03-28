@@ -93,36 +93,16 @@ namespace Repository
                  .Include(x => x.Event)
                  .Include(x => x.Promote);
 
-            //if (!string.IsNullOrWhiteSpace(promoteEventParameters.AddFor))
-            //{
-            //    promoteEvent = promoteEvent.Where(x => x.AppUserId == promoteEventParameters.AddFor);
-            //}
-            /*
-            if (!string.IsNullOrWhiteSpace(promoteEventParameters.AppUserId))
+            if (promoteEventParameters.FromDate != null)
             {
-                promoteEvent = promoteEvent.Where(x => x.AppUserId == promoteEventParameters.AppUserId);
+                promoteEvent = promoteEvent.Where(x => x.Event.Date >= promoteEventParameters.FromDate);
             }
 
-            if (promoteEventParameters.MinBirthday != null)
+            if (promoteEventParameters.ToDate != null)
             {
-                promoteEvent = promoteEvent.Where(x => x.Birthday >= promoteEventParameters.MinBirthday);
+                promoteEvent = promoteEvent.Where(x => x.Event.Date <= promoteEventParameters.ToDate);
             }
 
-            if (promoteEventParameters.MaxBirthday != null)
-            {
-                promoteEvent = promoteEvent.Where(x => x.Birthday < promoteEventParameters.MaxBirthday);
-            }
-
-            if (promoteEventParameters.MinCreateAt != null)
-            {
-                promoteEvent = promoteEvent.Where(x => x.CreateAt >= promoteEventParameters.MinCreateAt);
-            }
-
-            if (promoteEventParameters.MaxCreateAt != null)
-            {
-                promoteEvent = promoteEvent.Where(x => x.CreateAt < promoteEventParameters.MaxCreateAt);
-            }
-            */
         }
 
         private void PerformSearch(ref IQueryable<PromoteEvent> promoteEvent, string searchTerm)

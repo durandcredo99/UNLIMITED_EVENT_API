@@ -26,7 +26,7 @@ namespace Entities.Models
         [Required]
         public long Price { get; set; }
         [Required]
-        public bool IsPublic { get; set; }
+        public string IsPublic { get; set; }
         public string StatusEvent { get; set; }
         [Required]
         public int NbrPlace { get; set; }

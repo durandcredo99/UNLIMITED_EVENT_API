@@ -86,7 +86,7 @@ namespace Entities.Models
                 {
                     Id = Guid.NewGuid().ToString(),
                     Name = "Organisateur",
-                    NormalizedName = "Organisateur"
+                    NormalizedName = "ORGANISATEUR"
                 };
 
                 context.Roles.Add(AdminRole);

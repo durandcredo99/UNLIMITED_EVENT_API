@@ -11,9 +11,7 @@ namespace Entities.DataTransfertObjects
     {
         public Guid Id { get; set; }
         public int Position { get; set; }
-        [Display(Name = "Durée en jours")]
-        public int Duration { get; set; }
-        [Display(Name = "Montant")]
+        [Display(Name = "Montant par jour")]
         public long Amount { get; set; }
     }
 }

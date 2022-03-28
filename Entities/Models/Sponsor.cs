@@ -21,7 +21,7 @@ namespace Entities.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        public bool IsPublic { get; set; }
+        public string IsPublic { get; set; }
         public string PhoneSponsor { get; set; }
 
         public virtual ICollection<Event> Events { get; set; }

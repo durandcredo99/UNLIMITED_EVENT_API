@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Entities.DataTransfertObjects
 {
-    public class EventYearRequest
+    public class AnnualRateRequest
     {
         public Guid? Id { get; set; }
         [Required]

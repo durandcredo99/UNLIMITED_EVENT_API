@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entities.DataTransfertObjects
 {
@@ -19,8 +16,8 @@ namespace Entities.DataTransfertObjects
         public DateTime Date { get; set; }
         [Display(Name = "Prix")]
         public long Price { get; set; }
-        [Display(Name = "Public")]
-        public bool IsPublic { get; set; }
+        [Display(Name = "Statut de l'événement")]
+        public string IsPublic { get; set; }
         [Display(Name = "Statut")]
         public string StatusEvent { get; set; }
         [Display(Name = "Places")]

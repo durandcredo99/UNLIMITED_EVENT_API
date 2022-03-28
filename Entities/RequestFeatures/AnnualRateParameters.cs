@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace Entities.RequestFeatures
 {
-    public class EventYearParameters : QueryStringParameters
+    public class AnnualRateParameters : QueryStringParameters
     {
-        public EventYearParameters()
+        public AnnualRateParameters()
         {
             OrderBy = "StartingDate";
         }

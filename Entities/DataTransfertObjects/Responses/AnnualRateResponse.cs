@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Entities.DataTransfertObjects
 {
-    public class EventYearResponse
+    public class AnnualRateResponse
     {
         public Guid Id { get; set; }
         [Display(Name = "Date Début")]

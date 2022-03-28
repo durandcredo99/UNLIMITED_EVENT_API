@@ -329,7 +329,7 @@ namespace Entities.Migrations
                     b.ToTable("Events");
                 });
 
-            modelBuilder.Entity("Entities.Models.EventYear", b =>
+            modelBuilder.Entity("Entities.Models.AnnualRate", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -346,7 +346,7 @@ namespace Entities.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EventYears");
+                    b.ToTable("AnnualRates");
                 });
 
             modelBuilder.Entity("Entities.Models.Order", b =>

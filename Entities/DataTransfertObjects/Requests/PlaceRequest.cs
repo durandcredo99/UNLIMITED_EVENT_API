@@ -23,6 +23,5 @@ namespace Entities.DataTransfertObjects
         public Guid EventId { get; set; }
 
         public Guid? OrderId { get; set; }
-
     }
 }

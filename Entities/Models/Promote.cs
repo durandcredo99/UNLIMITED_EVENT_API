@@ -13,8 +13,7 @@ namespace Entities.Models
         public Guid Id { get; set; }
         [Required]
         public int Position { get; set; }
-        [Required]
-        public int Duration { get; set; }
+
         [Required]
         public long Amount { get; set; }
     }

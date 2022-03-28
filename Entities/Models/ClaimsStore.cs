@@ -77,9 +77,9 @@ namespace Entities.RequestFeatures
             new Claim("writePromoteEvent", "Write PromoteEvent"),
             new Claim("managePromoteEvent", "Manage PromoteEvent"),
 
-            new Claim("readEventYear", "Read EventYear"),
-            new Claim("writeEventYear", "Write EventYear"),
-            new Claim("manageEventYear", "Manage EventYear"),
+            new Claim("readAnnualRate", "Read AnnualRate"),
+            new Claim("writeAnnualRate", "Write AnnualRate"),
+            new Claim("manageAnnualRate", "Manage AnnualRate"),
 
             new Claim("readSponsor", "Read Sponsor"),
             new Claim("writeSponsor", "Write Sponsor"),
@@ -130,7 +130,7 @@ namespace Entities.RequestFeatures
             new Claim("readPromoteEvent", "Read PromoteEvent"),
             new Claim("writePromoteEvent", "Write PromoteEvent"),
 
-            new Claim("readEventYear", "Read EventYear"),
+            new Claim("readAnnualRate", "Read AnnualRate"),
 
             new Claim("readSponsor", "Read Sponsor"),
             new Claim("writeSponsor", "Write Sponsor"),
@@ -202,9 +202,9 @@ namespace Entities.RequestFeatures
             new Claim("writePromoteEvent", "Write PromoteEvent"),
             new Claim("managePromoteEvent", "Manage PromoteEvent"),
 
-            new Claim("readEventYear", "Read EventYear"),
-            new Claim("writeEventYear", "Write EventYear"),
-            new Claim("manageEventYear", "Manage EventYear"),
+            new Claim("readAnnualRate", "Read AnnualRate"),
+            new Claim("writeAnnualRate", "Write AnnualRate"),
+            new Claim("manageAnnualRate", "Manage AnnualRate"),
 
             new Claim("readSponsor", "Read Sponsor"),
             new Claim("writeSponsor", "Write Sponsor"),
@@ -253,7 +253,7 @@ namespace Entities.RequestFeatures
 
             new Claim("readPromoteEvent", "Read PromoteEvent"),
 
-            new Claim("readEventYear", "Read EventYear"),
+            new Claim("readAnnualRate", "Read AnnualRate"),
 
             new Claim("readSponsor", "Read Sponsor"),
 

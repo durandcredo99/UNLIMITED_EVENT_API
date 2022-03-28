@@ -44,6 +44,22 @@ namespace Repository
                     promoteParameters.PageSize)
                 );
         }
+        public async Task<int> GetNextNumberAsync(PromoteParameters promoteParameters)
+        {
+            var promotesCount = 0;
+
+            var promotes = Enumerable.Empty<Promote>().AsQueryable();
+            ApplyFilters(ref promotes, promoteParameters);
+
+            if (promotes.Any())
+            {
+                promotesCount = await promotes.MaxAsync(x => x.Position);
+            }
+
+            promotesCount++;
+
+            return promotesCount;
+        }
 
         public async Task<Promote> GetPromoteByIdAsync(Guid id)
         {

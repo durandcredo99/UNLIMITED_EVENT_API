@@ -48,7 +48,7 @@ namespace Repository
         public async Task<Event> GetEventByIdAsync(Guid id)
         {
             return await FindByCondition(_event => _event.Id.Equals(id))
-                .Include(x=>x.Places)
+                .Include(x => x.Places)
                 .FirstOrDefaultAsync();
         }
 
@@ -86,10 +86,20 @@ namespace Repository
         private void ApplyFilters(ref IQueryable<Event> events, EventQueryParameters eventQueryParameters)
         {
             events = FindAll()
-                .Include(x=>x.Places).ThenInclude(x => x.Order)
-                .Include(x=>x.Category)
-                .Include(x=>x.Sponsor)
-                .Include(x=>x.AppUser);
+                .Include(x => x.Places).ThenInclude(x => x.Order)
+                .Include(x => x.Category)
+                .Include(x => x.Sponsor)
+                .Include(x => x.AppUser);
+
+            if (eventQueryParameters.FromDate != null)
+            {
+                events = events.Where(x => x.Date >= eventQueryParameters.FromDate);
+            }
+
+            if (eventQueryParameters.ToDate != null)
+            {
+                events = events.Where(x => x.Date <= eventQueryParameters.ToDate);
+            }
 
             if (eventQueryParameters.OfCategoryId != null && eventQueryParameters.OfCategoryId != new Guid())
             {
@@ -101,10 +111,10 @@ namespace Repository
                 events = events.Where(x => x.AppUserId == eventQueryParameters.OrganizedBy);
             }
 
-            if (eventQueryParameters.PublicOnly)
-            {
-                events = events.Where(x => x.IsPublic);
-            }
+            //if (eventQueryParameters.PublicOnly)
+            //{
+            //    events = events.Where(x => x.IsPublic == "Public");
+            //}
         }
 
         private void PerformSearch(ref IQueryable<Event> events, string searchTerm)

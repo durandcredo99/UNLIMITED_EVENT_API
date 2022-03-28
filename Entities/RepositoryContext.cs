@@ -29,7 +29,7 @@ namespace Entities
         public DbSet<Place> Places { get; set; }
         public DbSet<Promote> Promotes { get; set; }
         public DbSet<PromoteEvent> PromoteEvents { get; set; }
-        public DbSet<EventYear> EventYears { get; set; }
+        public DbSet<AnnualRate> AnnualRates { get; set; }
 
 
         public DbSet<Workstation> Workstations { get; set; }

@@ -31,8 +31,8 @@ namespace Entities.DataTransfertObjects
         [Display(Name = "Prix")]
         public long Price { get; set; }
         [Required]
-        [Display(Name = "Public ou Privée")]
-        public bool IsPublic { get; set; }
+        [Display(Name = "Statut de l'événement")]
+        public string IsPublic { get; set; }
         [Display(Name = "Statut")]
         public string StatusEvent { get; set; }
         [Required]

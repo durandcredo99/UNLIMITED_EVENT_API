@@ -10,7 +10,7 @@ namespace Contracts
     public interface IPromoteRepository
     {
         Task<PagedList<Promote>> GetPromotesAsync(PromoteParameters promoteParameters);
-
+        Task<int> GetNextNumberAsync(PromoteParameters promoteParameters);
         Task<Promote> GetPromoteByIdAsync(Guid id);
         Task<bool> PromoteExistAsync(Promote promote);
         Task CreatePromoteAsync(Promote promote);

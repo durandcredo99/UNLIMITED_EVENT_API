@@ -86,6 +86,7 @@ namespace Repository
             {
                 sponsors = sponsors.Where(x => x.AppUserId == sponsorParameters.AddBy);
             }
+           
 
         }
 

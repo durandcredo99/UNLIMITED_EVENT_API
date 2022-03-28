@@ -80,7 +80,16 @@ namespace Repository
         #region ApplyFilters and PerformSearch Region
         private void ApplyFilters(ref IQueryable<Payment> payments, PaymentParameters paymentParameters)
         {
-            payments = FindAll();
+            payments = FindAll()
+                .Include(x => x.Order)
+                .Include(x => x.Promote)
+                .Include(x => x.PromoteEvent)
+                .Include(x => x.AppUser);
+
+            if (!string.IsNullOrWhiteSpace(paymentParameters.InvoiceFrom))
+            {
+                payments = payments.Where(x => x.AppUserId == paymentParameters.InvoiceFrom);
+            }
             /*
             if (!string.IsNullOrWhiteSpace(paymentParameters.AppUserId))
             {

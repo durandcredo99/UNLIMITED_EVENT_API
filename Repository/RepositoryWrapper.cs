@@ -35,7 +35,7 @@ namespace Repository
         private IPartnerRepository _partnerRepository;
         private IPromoteRepository _promoteRepository;
         private IPromoteEventRepository _promoteEventRepository;
-        private IEventYearRepository _eventYearRepository;
+        private IAnnualRateRepository _annualRateRepository;
 
         private IAppUserRepository _appUser;
         private IEmailSenderRepository _emailSender;
@@ -61,7 +61,7 @@ namespace Repository
         private readonly ISortHelper<Partner> _partnerSortHelper;
         private readonly ISortHelper<Promote> _promoteSortHelper;
         private readonly ISortHelper<PromoteEvent> _promoteEventSortHelper;
-        private readonly ISortHelper<EventYear> _eventYearSortHelper;
+        private readonly ISortHelper<AnnualRate> _annualRateSortHelper;
         private readonly ISortHelper<Workstation> _workstationSortHelper;
 
 
@@ -265,15 +265,15 @@ namespace Repository
             }
         }
 
-        public IEventYearRepository EventYear
+        public IAnnualRateRepository AnnualRate
         {
             get
             {
-                if (_eventYearRepository == null)
+                if (_annualRateRepository == null)
                 {
-                    _eventYearRepository = new EventYearRepository(_repoContext, _eventYearSortHelper);
+                    _annualRateRepository = new AnnualRateRepository(_repoContext, _annualRateSortHelper);
                 }
-                return _eventYearRepository;
+                return _annualRateRepository;
             }
         }
 
@@ -354,7 +354,7 @@ namespace Repository
             ISortHelper<Partner> partnerSortHelper,
             ISortHelper<Promote> promoteSortHelper,
             ISortHelper<PromoteEvent> promoteEventSortHelper,
-            ISortHelper<EventYear> eventYearSortHelper,
+            ISortHelper<AnnualRate> annualRateSortHelper,
             ISortHelper<Workstation> workstationSortHelper,
 
             IHttpContextAccessor httpContextAccessor)
@@ -379,7 +379,7 @@ namespace Repository
             _partnerSortHelper = partnerSortHelper;
             _promoteSortHelper = promoteSortHelper;
             _promoteEventSortHelper = promoteEventSortHelper;
-            _eventYearSortHelper = eventYearSortHelper;
+            _annualRateSortHelper = annualRateSortHelper;
             _workstationSortHelper = workstationSortHelper;
 
             _emailConfig = emailConfig;

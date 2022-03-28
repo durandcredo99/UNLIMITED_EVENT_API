@@ -98,7 +98,7 @@ namespace Entities.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EventYears",
+                name: "AnnualRates",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -108,7 +108,7 @@ namespace Entities.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EventYears", x => x.Id);
+                    table.PrimaryKey("PK_AnnualRates", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -662,7 +662,7 @@ namespace Entities.Migrations
                 name: "Commercials");
 
             migrationBuilder.DropTable(
-                name: "EventYears");
+                name: "AnnualRates");
 
             migrationBuilder.DropTable(
                 name: "Partners");

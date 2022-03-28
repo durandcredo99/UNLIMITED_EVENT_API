@@ -21,5 +21,7 @@ namespace Entities.DataTransfertObjects
         public EventResponse Event { get; set; }
         public Guid? OrderId { get; set; }
         public OrderResponse Order { get; set; }
+
+        public bool IsSelected { get; set; }
     }
 }

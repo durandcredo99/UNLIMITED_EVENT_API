@@ -13,8 +13,8 @@ namespace Entities.DataTransfertObjects
         public string ImgLink { get; set; }
         [Display(Name = "Nom")]
         public string Name { get; set; }
-        [Display(Name = "Public ou Privée")]
-        public bool IsPublic { get; set; }
+        [Display(Name = "Statut du sponsor")]
+        public string IsPublic { get; set; }
         [Display(Name = "Téléphone Sponsor")]
         public string PhoneSponsor { get; set; }
         public string AppUserId { get; set; }
