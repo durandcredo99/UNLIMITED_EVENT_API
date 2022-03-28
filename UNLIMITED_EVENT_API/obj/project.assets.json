@@ -8735,7 +8735,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Utilisateur\\.nuget\\packages\\": {},
+    "C:\\Users\\AmStrong\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -8744,14 +8744,14 @@
       "projectUniqueName": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API.csproj",
       "projectName": "UNLIMITED_EVENT_API",
       "projectPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API.csproj",
-      "packagesPath": "C:\\Users\\Utilisateur\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\AmStrong\\.nuget\\packages\\",
       "outputPath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Utilisateur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AmStrong\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8832,7 +8832,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
