@@ -19,6 +19,11 @@ namespace Entities.DataTransfertObjects
         [Display(Name = "Nom")]
         public string Name { get; set; }
         public string Status { get; set; }
+
+        [Required]
+        [Display(Name = "Nbr de Places à ajouter")]
+        public int NbrPlace { get; set; }
+
         [Required]
         public Guid EventId { get; set; }
 

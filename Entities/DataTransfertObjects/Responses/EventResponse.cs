@@ -12,16 +12,22 @@ namespace Entities.DataTransfertObjects
         [Display(Name = "Nom")]
         public string Name { get; set; }
         public string Description { get; set; }
+
+        [Required]
+        [Display(Name = "Commence le")]
         [BindProperty, DataType(DataType.DateTime)]
-        public DateTime Date { get; set; }
-        [Display(Name = "Prix")]
-        public long Price { get; set; }
+        public DateTime StartsOn { get; set; } = DateTime.Now;
+
+        [Required]
+        [Display(Name = "Se termine")]
+        [BindProperty, DataType(DataType.DateTime)]
+        public DateTime EndsOn { get; set; } = DateTime.Now.AddDays(1);
+        
         [Display(Name = "Statut de l'événement")]
         public string IsPublic { get; set; }
+        
         [Display(Name = "Statut")]
         public string StatusEvent { get; set; }
-        [Display(Name = "Places")]
-        public int NbrPlace { get; set; }
         public string Lieu { get; set; }
         [Display(Name = "Favori")]
         public int NoPriority { get; set; }
@@ -30,7 +36,7 @@ namespace Entities.DataTransfertObjects
         public Guid CategoryId { get; set; }
         public CategoryResponse Category { get; set; }
 
-        public String AppUserId { get; set; }
+        public string AppUserId { get; set; }
         public AppUserResponse AppUser { get; set; }
         [Display(Name = "Sponsor")]
         public Guid SponsorId { get; set; }

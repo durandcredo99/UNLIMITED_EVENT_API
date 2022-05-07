@@ -23,21 +23,24 @@ namespace Entities.DataTransfertObjects
         [Display(Name = "Nom")]
         public string Name { get; set; }
         public string Description { get; set; }
+
         [Required]
+        [Display(Name = "Commence le")]
         [BindProperty, DataType(DataType.DateTime)]
-        //public DateTime Date { get; set; } = DateTime.Now;
-        public DateTime Date { get; set; } = DateTime.Today;
+        public DateTime StartsOn { get; set; } = DateTime.Now;
+
         [Required]
-        [Display(Name = "Prix")]
-        public long Price { get; set; }
+        [Display(Name = "Se termine")]
+        [BindProperty, DataType(DataType.DateTime)]
+        public DateTime EndsOn { get; set; } = DateTime.Now.AddDays(1);
+
         [Required]
         [Display(Name = "Statut de l'événement")]
         public string IsPublic { get; set; }
+
         [Display(Name = "Statut")]
         public string StatusEvent { get; set; }
-        [Required]
-        [Display(Name = "Places")]
-        public int NbrPlace { get; set; }
+
         public int NoPriority { get; set; }
 
         [Required]
@@ -48,9 +51,14 @@ namespace Entities.DataTransfertObjects
         public string AppUserId { get; set; }
 
         public Guid SponsorId { get; set; }
+        
+        [Required]
+        [Display(Name = "Bannière")]
         public IFormFile File { get; set; }
 
         public string Lieu { get; set; }
+        [Display(Name = "J'utilise mon propre creat")]
+        public bool MyOwnCreat { get; set; }
        
     }
 }

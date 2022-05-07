@@ -54,5 +54,10 @@ namespace Repository
         {
             await Task.Run(() => this.RepositoryContext.Set<T>().Remove(entity));
         }
+
+        public async Task DeleteAsync(IEnumerable<T> entities)
+        {
+            await Task.Run(() => this.RepositoryContext.Set<T>().RemoveRange(entities));
+        }
     }
 }

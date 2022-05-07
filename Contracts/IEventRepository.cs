@@ -11,12 +11,13 @@ namespace Contracts
     {
         Task<PagedList<Event>> GetEventsAsync(EventQueryParameters eventParameters);
 
-        Task<Event> GetEventByIdAsync(Guid id);
+        Task<Event> GetPlaceByIdAsync(Guid id);
+        Task<Event> GetEventDetailsAsync(Guid id);
         Task<bool> EventExistAsync(Event _event);
 
         Task CreateEventAsync(Event _event);
         Task UpdateEventAsync(Event _event);
-        Task UpdateEventAsync(IEnumerable<Event> events);
+        //Task UpdateEventAsync(IEnumerable<Event> events);
         Task DeleteEventAsync(Event _event);
         Task<int> CountEventsAsync();
 

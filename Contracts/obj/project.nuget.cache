@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "zZtwsxTZ4mte9uYfVHw63AIZ6kqyktOSJ24SioHkTFCh3VeDF8cfYALT1Rj3O+SjpZrXLpdmKyM3xyj6q55Rfg==",
+  "dgSpecHash": "DjjEBSLD3LmmRLu/qPQ/1NI2Y6NCiP1gm4xF4DFY7GX1CNkh1Ya5d7pr62u3ih4SXpC32ocMRXUcw609HJEAlw==",
   "success": true,
   "projectFilePath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\Contracts\\Contracts.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\AmStrong\\.nuget\\packages\\dinktopdf\\1.0.8\\dinktopdf.1.0.8.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\mailkit\\2.0.1\\mailkit.2.0.1.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.11\\microsoft.aspnetcore.cryptography.internal.5.0.11.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.11\\microsoft.aspnetcore.cryptography.keyderivation.5.0.11.nupkg.sha512",
@@ -46,6 +47,7 @@
     "C:\\Users\\AmStrong\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\portable.bouncycastle\\1.8.1.3\\portable.bouncycastle.1.8.1.3.nupkg.sha512",
+    "C:\\Users\\AmStrong\\.nuget\\packages\\qrcoder\\1.4.2\\qrcoder.1.4.2.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

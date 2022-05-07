@@ -15,6 +15,7 @@ namespace Entities.RequestFeatures
         public string OrganizedBy { get; set; }
         public Guid? OfCategoryId { get; set; }
         public string PublicOnly { get; set; }
+        public bool AvailableOnly { get; set; }
         public DateTime? FromDate { get; set; }
         public DateTime? ToDate { get; set; }
     }

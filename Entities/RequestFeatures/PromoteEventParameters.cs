@@ -12,6 +12,7 @@ namespace Entities.RequestFeatures
             OrderBy = "StartingDate";
         }
         public string AddFor { get; set; }
+        public bool AvailableOnly { get; set; }
 
         public DateTime? FromDate { get; set; }
         public DateTime? ToDate { get; set; }

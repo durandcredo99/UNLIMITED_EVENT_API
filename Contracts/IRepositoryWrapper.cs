@@ -20,11 +20,13 @@ namespace Contracts
         ISubCategoryRepository SubCategory { get; }
         ICommercialRepository Commercial { get; }
         ICategoryRepository Category { get; }
+        IDinkToPdfRepository PdfService { get; }
         IEventRepository Event { get; }
         ISponsorRepository Sponsor { get; }
         IPartnerRepository Partner { get; }
         IPaymentRepository Payment { get; }
         IPlaceRepository Place { get; }
+        IQrCodeRepository QrCode { get; }
         IPromoteRepository Promote { get; }
         IPromoteEventRepository PromoteEvent { get; }
         IAnnualRateRepository AnnualRate { get; }

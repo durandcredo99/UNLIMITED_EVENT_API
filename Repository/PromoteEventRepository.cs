@@ -93,14 +93,19 @@ namespace Repository
                  .Include(x => x.Event)
                  .Include(x => x.Promote);
 
+            if (promoteEventParameters.AvailableOnly)
+            {
+                promoteEvent = promoteEvent.Where(x => x.Event.EndsOn > DateTime.UtcNow.AddHours(1));
+            }
+
             if (promoteEventParameters.FromDate != null)
             {
-                promoteEvent = promoteEvent.Where(x => x.Event.Date >= promoteEventParameters.FromDate);
+                promoteEvent = promoteEvent.Where(x => x.Event.StartsOn >= promoteEventParameters.FromDate);
             }
 
             if (promoteEventParameters.ToDate != null)
             {
-                promoteEvent = promoteEvent.Where(x => x.Event.Date <= promoteEventParameters.ToDate);
+                promoteEvent = promoteEvent.Where(x => x.Event.EndsOn <= promoteEventParameters.ToDate);
             }
 
         }

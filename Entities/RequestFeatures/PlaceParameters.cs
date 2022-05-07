@@ -9,8 +9,9 @@ namespace Entities.RequestFeatures
     {
         public PlaceParameters()
         {
-            OrderBy = "name";
+            OrderBy = "noPlace";
         }
         public Guid? EventId { get; set; }
+        public string BookededBy { get; set; }
     }
 }

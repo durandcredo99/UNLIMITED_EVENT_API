@@ -45,7 +45,13 @@ namespace Repository
                 );
         }
 
-        public async Task<Event> GetEventByIdAsync(Guid id)
+        public async Task<Event> GetPlaceByIdAsync(Guid id)
+        {
+            return await FindByCondition(_event => _event.Id.Equals(id))
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<Event> GetEventDetailsAsync(Guid id)
         {
             return await FindByCondition(_event => _event.Id.Equals(id))
                 .Include(x => x.Places)
@@ -68,10 +74,11 @@ namespace Repository
             await UpdateAsync(_event);
         }
 
-        public async Task UpdateEventAsync(IEnumerable<Event> events)
-        {
-            await UpdateAsync(events);
-        }
+        //public async Task UpdateEventAsync(IEnumerable<Event> events)
+        //{
+        //    await UpdateAsync(events);
+        //}
+
         public async Task<int> CountEventsAsync()
         {
             return await FindAll().CountAsync();
@@ -91,14 +98,19 @@ namespace Repository
                 .Include(x => x.Sponsor)
                 .Include(x => x.AppUser);
 
+            if (eventQueryParameters.AvailableOnly)
+            {
+                events = events.Where(x => x.EndsOn > DateTime.UtcNow.AddHours(1));
+            }
+            
             if (eventQueryParameters.FromDate != null)
             {
-                events = events.Where(x => x.Date >= eventQueryParameters.FromDate);
+                events = events.Where(x => x.StartsOn >= eventQueryParameters.FromDate);
             }
 
             if (eventQueryParameters.ToDate != null)
             {
-                events = events.Where(x => x.Date <= eventQueryParameters.ToDate);
+                events = events.Where(x => x.EndsOn <= eventQueryParameters.ToDate);
             }
 
             if (eventQueryParameters.OfCategoryId != null && eventQueryParameters.OfCategoryId != new Guid())
@@ -111,10 +123,6 @@ namespace Repository
                 events = events.Where(x => x.AppUserId == eventQueryParameters.OrganizedBy);
             }
 
-            //if (eventQueryParameters.PublicOnly)
-            //{
-            //    events = events.Where(x => x.IsPublic == "Public");
-            //}
         }
 
         private void PerformSearch(ref IQueryable<Event> events, string searchTerm)

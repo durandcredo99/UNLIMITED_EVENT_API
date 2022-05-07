@@ -2,6 +2,24 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "DinkToPdf/1.0.8": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "System.Collections.Concurrent": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Threading.Thread": "4.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/DinkToPdf.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/DinkToPdf.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -668,6 +686,18 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
+      "QRCoder/1.4.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "4.7.0"
+        },
+        "compile": {
+          "lib/net5.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/QRCoder.dll": {}
+        }
+      },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
@@ -1111,7 +1141,7 @@
           "Microsoft.Win32.SystemEvents": "4.7.0"
         },
         "compile": {
-          "ref/netcoreapp3.0/_._": {}
+          "ref/netcoreapp3.0/System.Drawing.Common.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Drawing.Common.dll": {}
@@ -2291,7 +2321,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Threading.Thread.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Threading.Thread.dll": {}
@@ -2440,6 +2470,20 @@
     }
   },
   "libraries": {
+    "DinkToPdf/1.0.8": {
+      "sha512": "wJDlcNXjQ+OnBFwh3LBeAXgrXqlKl0RsgN60XpxEFbyqzdaG9ASb5HTXQjXQPaBguSCOrGZZESPnpcng34TEkw==",
+      "type": "package",
+      "path": "dinktopdf/1.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dinktopdf.1.0.8.nupkg.sha512",
+        "dinktopdf.nuspec",
+        "lib/netstandard1.6/DinkToPdf.dll",
+        "lib/netstandard1.6/DinkToPdf.pdb",
+        "lib/netstandard1.6/DinkToPdf.xml"
+      ]
+    },
     "Humanizer.Core/2.8.26": {
       "sha512": "OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "type": "package",
@@ -3472,6 +3516,25 @@
         "lib/portable-net40+sl5+win8+wp8+wpa81/BouncyCastle.Crypto.xml",
         "portable.bouncycastle.1.8.1.3.nupkg.sha512",
         "portable.bouncycastle.nuspec"
+      ]
+    },
+    "QRCoder/1.4.2": {
+      "sha512": "985OiJWb6Fft5r1AQ1NcpGgDDGZVKvWIF9ijV3N2lxJaTKpL2mAHAGvMXgcjRLMGSaldAcBiTFDGHCgDRpCW9A==",
+      "type": "package",
+      "path": "qrcoder/1.4.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/QRCoder.dll",
+        "lib/net40/QRCoder.dll",
+        "lib/net5.0-windows7.0/QRCoder.dll",
+        "lib/net5.0/QRCoder.dll",
+        "lib/netstandard1.3/QRCoder.dll",
+        "lib/netstandard2.0/QRCoder.dll",
+        "nuget-icon.png",
+        "nuget-readme.md",
+        "qrcoder.1.4.2.nupkg.sha512",
+        "qrcoder.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -8220,12 +8283,14 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "DinkToPdf >= 1.0.8",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.11",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 5.0.11",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.11",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.11",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.11",
       "NETCore.MailKit >= 2.0.2",
+      "QRCoder >= 1.4.2",
       "System.Linq.Dynamic.Core >= 1.2.13"
     ]
   },
@@ -8273,6 +8338,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "DinkToPdf": {
+            "target": "Package",
+            "version": "[1.0.8, )"
+          },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.11, )"
@@ -8301,6 +8370,10 @@
             "target": "Package",
             "version": "[2.0.2, )"
           },
+          "QRCoder": {
+            "target": "Package",
+            "version": "[1.4.2, )"
+          },
           "System.Linq.Dynamic.Core": {
             "target": "Package",
             "version": "[1.2.13, )"
@@ -8321,7 +8394,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

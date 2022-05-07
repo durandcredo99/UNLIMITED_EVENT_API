@@ -22,14 +22,14 @@ namespace Entities.Models
         public string Name { get; set; }
         public string Description { get; set; }
         [Required]
-        public DateTime Date { get; set; }
+        public DateTime StartsOn { get; set; }
+        [Required]
+        public DateTime EndsOn { get; set; }
         [Required]
         public long Price { get; set; }
         [Required]
         public string IsPublic { get; set; }
         public string StatusEvent { get; set; }
-        [Required]
-        public int NbrPlace { get; set; }
         public string Lieu { get; set; }
         public int NoPriority { get; set; }
 

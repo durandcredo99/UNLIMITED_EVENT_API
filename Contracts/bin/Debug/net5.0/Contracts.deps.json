@@ -14,6 +14,23 @@
           "Contracts.dll": {}
         }
       },
+      "DinkToPdf/1.0.8": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "System.Collections.Concurrent": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Threading.Thread": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.6/DinkToPdf.dll": {
+            "assemblyVersion": "1.0.8.0",
+            "fileVersion": "1.0.8.0"
+          }
+        }
+      },
       "MailKit/2.0.1": {
         "dependencies": {
           "MimeKit": "2.0.1",
@@ -496,6 +513,17 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
             "assemblyVersion": "1.8.1.0",
             "fileVersion": "1.8.1.146"
+          }
+        }
+      },
+      "QRCoder/1.4.2": {
+        "dependencies": {
+          "System.Drawing.Common": "4.7.0"
+        },
+        "runtime": {
+          "lib/net5.0/QRCoder.dll": {
+            "assemblyVersion": "1.4.2.0",
+            "fileVersion": "1.4.2.0"
           }
         }
       },
@@ -1480,10 +1508,12 @@
       },
       "Entities/1.0.0": {
         "dependencies": {
+          "DinkToPdf": "1.0.8",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.11",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "5.0.11",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
           "NETCore.MailKit": "2.0.2",
+          "QRCoder": "1.4.2",
           "System.Linq.Dynamic.Core": "1.2.13"
         },
         "runtime": {
@@ -1497,6 +1527,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "DinkToPdf/1.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wJDlcNXjQ+OnBFwh3LBeAXgrXqlKl0RsgN60XpxEFbyqzdaG9ASb5HTXQjXQPaBguSCOrGZZESPnpcng34TEkw==",
+      "path": "dinktopdf/1.0.8",
+      "hashPath": "dinktopdf.1.0.8.nupkg.sha512"
     },
     "MailKit/2.0.1": {
       "type": "package",
@@ -1791,6 +1828,13 @@
       "sha512": "sha512-1jUpszv0ETm+hl78HKnYgY3wPzt6qRtjxaPENNrGCuB8nondbR/j75WAKdd6sxXzOzBcX07WMZhZEYc4s5jVWg==",
       "path": "portable.bouncycastle/1.8.1.3",
       "hashPath": "portable.bouncycastle.1.8.1.3.nupkg.sha512"
+    },
+    "QRCoder/1.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-985OiJWb6Fft5r1AQ1NcpGgDDGZVKvWIF9ijV3N2lxJaTKpL2mAHAGvMXgcjRLMGSaldAcBiTFDGHCgDRpCW9A==",
+      "path": "qrcoder/1.4.2",
+      "hashPath": "qrcoder.1.4.2.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",

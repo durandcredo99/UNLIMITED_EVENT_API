@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using DinkToPdf.Contracts;
 using Entities;
 using Entities.Helpers;
 using Entities.Models;
@@ -28,8 +29,10 @@ namespace Repository
         private ISubCategoryRepository _subCategoryRepository;
         private ICommercialRepository _commercialRepository;
         private ICategoryRepository _categoryRepository;
+        private IDinkToPdfRepository _dinkToPdfRepository;
         private IEventRepository _eventRepository;
         private IPaymentRepository _paymentRepository;
+        private IQrCodeRepository _qrCodeRepository;
         private IPlaceRepository _placeRepository;
         private ISponsorRepository _sponsorRepository;
         private IPartnerRepository _partnerRepository;
@@ -42,6 +45,7 @@ namespace Repository
         private IWebHostEnvironment _webHostEnvironment;
         private IWorkstationRepository _workstation;
 
+        private readonly IConverter _converter;
         private readonly IConfiguration _configuration;
         private IHttpContextAccessor _httpContextAccessor;
         private IOptions<EmailSettings> _emailSettings;
@@ -110,17 +114,6 @@ namespace Repository
                 return _bannerRepository;
             }
         }
-        public ICategoryBlogRepository CategoryBlog
-        {
-            get
-            {
-                if (_categoryBlogRepository == null)
-                {
-                    _categoryBlogRepository = new CategoryBlogRepository(_repoContext, _categoryBlogSortHelper);
-                }
-                return _categoryBlogRepository;
-            }
-        }
 
         public IBlogRepository Blog
         {
@@ -134,6 +127,18 @@ namespace Repository
             }
         }
 
+        public ICategoryBlogRepository CategoryBlog
+        {
+            get
+            {
+                if (_categoryBlogRepository == null)
+                {
+                    _categoryBlogRepository = new CategoryBlogRepository(_repoContext, _categoryBlogSortHelper);
+                }
+                return _categoryBlogRepository;
+            }
+        }
+
         public IOrderRepository Order
         {
             get
@@ -143,6 +148,30 @@ namespace Repository
                     _orderRepository = new OrderRepository(_repoContext, _orderSortHelper);
                 }
                 return _orderRepository;
+            }
+        }
+
+        public IDinkToPdfRepository PdfService
+        {
+            get
+            {
+                if (_dinkToPdfRepository == null)
+                {
+                    _dinkToPdfRepository = new DinkToPdfRepository(_converter);
+                }
+                return _dinkToPdfRepository;
+            }
+        }
+
+        public IQrCodeRepository QrCode
+        {
+            get
+            {
+                if (_qrCodeRepository == null)
+                {
+                    _qrCodeRepository = new QrCodeRepository();
+                }
+                return _qrCodeRepository;
             }
         }
 
@@ -223,7 +252,7 @@ namespace Repository
             {
                 if (_placeRepository == null)
                 {
-                    _placeRepository = new PlaceRepository(_repoContext, _placeSortHelper);
+                    _placeRepository = new PlaceRepository(_repoContext, _placeSortHelper, _webHostEnvironment);
                 }
                 return _placeRepository;
             }
@@ -339,6 +368,7 @@ namespace Repository
             IOptions<EmailSettings> options,
             IWebHostEnvironment webHostEnvironment,
             IConfiguration configuration,
+            IConverter converter,
             ISortHelper<Banner> bannerSortHelper,
             ISortHelper<Category> categorySortHelper,
             ISortHelper<CategoryBlog> categoryBlogSortHelper,
@@ -361,6 +391,7 @@ namespace Repository
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _converter = converter;
             _configuration = configuration;
             _repoContext = repositoryContext;
 

@@ -1,32 +1,40 @@
 ﻿using Contracts;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 using Entities;
 using Entities.Extensions;
 using Entities.Helpers;
 using Entities.Models;
 using Entities.RequestFeatures;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using static Contracts.IPlaceRepository;
 
 namespace Repository
 {
     public class PlaceRepository : RepositoryBase<Place>, IPlaceRepository
     {
         private ISortHelper<Place> _sortHelper;
+        private readonly IWebHostEnvironment _webHostEnvironnement;
 
         public PlaceRepository(
             RepositoryContext repositoryContext,
-            ISortHelper<Place> sortHelper
+            ISortHelper<Place> sortHelper,
+            IWebHostEnvironment webHostEnvironnement
             ) : base(repositoryContext)
         {
             _sortHelper = sortHelper;
+            _webHostEnvironnement = webHostEnvironnement;
         }
-    
+
         public async Task<PagedList<Place>> GetPlacesAsync(PlaceParameters placeParameters)
         {
             var places = Enumerable.Empty<Place>().AsQueryable();
@@ -49,6 +57,14 @@ namespace Repository
         public async Task<Place> GetPlaceByIdAsync(Guid id)
         {
             return await FindByCondition(place => place.Id.Equals(id))
+                .Include(x=>x.Order)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<Place> GetPlaceDetailsAsync(Guid id)
+        {
+            return await FindByCondition(place => place.Id.Equals(id))
+                .Include(x=>x.Event).ThenInclude(x=>x.Category)
                 .Include(x=>x.Order)
                 .FirstOrDefaultAsync();
         }
@@ -84,12 +100,17 @@ namespace Repository
             await DeleteAsync(place);
         }
 
+        public async Task DeletePlaceAsync(IEnumerable<Place> places)
+        {
+            await DeleteAsync(places);
+        }
 
-        public async Task<int> getNextNumber()
+
+        public async Task<int> getNextNumber(Guid eventId)
         {
             int currentNum =0;
 
-            if (FindAll().Any()) currentNum = await FindAll().MaxAsync(x => x.NoPlace);
+            if (FindByCondition(x=>x.EventId == eventId).Any()) currentNum = await FindByCondition(x => x.EventId == eventId).MaxAsync(x => x.NoPlace);
             currentNum++;
 
             return currentNum;
@@ -99,39 +120,18 @@ namespace Repository
         private void ApplyFilters(ref IQueryable<Place> places, PlaceParameters placeParameters)
         {
             places = FindAll()
-                .Include(x=>x.Order);
+                .Include(x=>x.Event)
+                .Include(x => x.Order);
 
             if (placeParameters.EventId != null && placeParameters.EventId != new Guid())
             {
                 places = places.Where(x => x.EventId == placeParameters.EventId);
             }
 
-            /*
-            if (!string.IsNullOrWhiteSpace(placeParameters.AppUserId))
+            if (!string.IsNullOrWhiteSpace(placeParameters.BookededBy))
             {
-                places = places.Where(x => x.AppUserId == placeParameters.AppUserId);
+                places = places.Where(x => x.Order.AppUserId == placeParameters.BookededBy);
             }
-
-            if (placeParameters.MinBirthday != null)
-            {
-                places = places.Where(x => x.Birthday >= placeParameters.MinBirthday);
-            }
-
-            if (placeParameters.MaxBirthday != null)
-            {
-                places = places.Where(x => x.Birthday < placeParameters.MaxBirthday);
-            }
-
-            if (placeParameters.MinCreateAt != null)
-            {
-                places = places.Where(x => x.CreateAt >= placeParameters.MinCreateAt);
-            }
-
-            if (placeParameters.MaxCreateAt != null)
-            {
-                places = places.Where(x => x.CreateAt < placeParameters.MaxCreateAt);
-            }
-            */
         }
 
         private void PerformSearch(ref IQueryable<Place> places, string searchTerm)
