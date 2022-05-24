@@ -13,55 +13,51 @@ namespace Repository
     public class FileRepository : IFileRepository
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
-        private string absoluteFilePath;
+        private string baseFolderPath;
         private string relativeFilePath;
 
-        public string AbsoluteFilePath
-        {
-            get { return absoluteFilePath; }
-            //set { folderName = value; }
-        }
-
-        private string fileName;
-        public string FilePath { set => fileName = value; }
+        private string fileId;
+        public string FilePath { set => fileId = value; }
 
 
 
         public FileRepository(IWebHostEnvironment webHostEnvironment, string filePath)
         {
             _webHostEnvironment = webHostEnvironment;
-            this.absoluteFilePath = $"{_webHostEnvironment.WebRootPath}/{filePath}";
+            this.baseFolderPath = $"{_webHostEnvironment.WebRootPath}/{filePath}";
 
             relativeFilePath = $"{filePath}";
         }
 
 
 
-        public async Task DeleteFile(string filePath)
+        public async Task DeleteFile(string relativeFilePath)
         {
-            try
+            var fullPath = $"{_webHostEnvironment.WebRootPath}/{relativeFilePath}";
+
+            if (File.Exists(fullPath))
             {
-                await Task.Run(()=> File.Delete(filePath));
+                await Task.Run(() => File.Delete(fullPath));
             }
-            catch (Exception)
-            {
-                throw;
-            }
+
         }
 
         public async Task<string> UploadFile(IFormFile file)
         {
+            #region Try catch version
+            /*
+             
             try
             {
-                if (!System.IO.Directory.Exists(absoluteFilePath)) Directory.CreateDirectory(absoluteFilePath);
+                if (!System.IO.Directory.Exists(baseFolderPath)) Directory.CreateDirectory(baseFolderPath);
 
 
                 if (file.Length > 0)
                 {
                     string extention = file.FileName.Split('.').Last();
 
-                    var fullPath = $"{this.absoluteFilePath}/{fileName}.{extention}";
-                    var relativePath = $"{this.relativeFilePath}/{fileName}.{extention}";
+                    var fullPath = $"{this.baseFolderPath}/{fileId}.{extention}";
+                    var relativePath = $"{this.relativeFilePath}/{fileId}.{extention}";
                     using (var stream = File.Create(fullPath))
                     {
                         await file.CopyToAsync(stream);
@@ -73,6 +69,26 @@ namespace Repository
             catch (Exception)
             {
                 throw;
+            } 
+
+             */
+            #endregion
+
+            if (!System.IO.Directory.Exists(baseFolderPath)) Directory.CreateDirectory(baseFolderPath);
+
+
+            if (file.Length > 0)
+            {
+                string extention = file.FileName.Split('.').Last();
+
+                var fullPath = $"{this.baseFolderPath}/{fileId}.{extention}";
+                var relativePath = $"{this.relativeFilePath}/{fileId}.{extention}";
+                using (var stream = File.Create(fullPath))
+                {
+                    await file.CopyToAsync(stream);
+                    await stream.FlushAsync();
+                    return relativePath;
+                }
             }
             return null;
         }

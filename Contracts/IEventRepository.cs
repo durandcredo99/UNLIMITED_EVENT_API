@@ -11,7 +11,7 @@ namespace Contracts
     {
         Task<PagedList<Event>> GetEventsAsync(EventQueryParameters eventParameters);
 
-        Task<Event> GetPlaceByIdAsync(Guid id);
+        Task<Event> GetEventByIdAsync(Guid id);
         Task<Event> GetEventDetailsAsync(Guid id);
         Task<bool> EventExistAsync(Event _event);
 

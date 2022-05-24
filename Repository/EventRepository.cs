@@ -45,7 +45,7 @@ namespace Repository
                 );
         }
 
-        public async Task<Event> GetPlaceByIdAsync(Guid id)
+        public async Task<Event> GetEventByIdAsync(Guid id)
         {
             return await FindByCondition(_event => _event.Id.Equals(id))
                 .FirstOrDefaultAsync();
@@ -93,7 +93,7 @@ namespace Repository
         private void ApplyFilters(ref IQueryable<Event> events, EventQueryParameters eventQueryParameters)
         {
             events = FindAll()
-                .Include(x => x.Places).ThenInclude(x => x.Order)
+                //.Include(x => x.Places).ThenInclude(x => x.Order)
                 .Include(x => x.Category)
                 .Include(x => x.Sponsor)
                 .Include(x => x.AppUser);
@@ -102,7 +102,7 @@ namespace Repository
             {
                 events = events.Where(x => x.EndsOn > DateTime.UtcNow.AddHours(1));
             }
-            
+
             if (eventQueryParameters.FromDate != null)
             {
                 events = events.Where(x => x.StartsOn >= eventQueryParameters.FromDate);
@@ -116,6 +116,11 @@ namespace Repository
             if (eventQueryParameters.OfCategoryId != null && eventQueryParameters.OfCategoryId != new Guid())
             {
                 events = events.Where(x => x.CategoryId == eventQueryParameters.OfCategoryId);
+            }
+            
+            if (eventQueryParameters.OnTheBillId != null && eventQueryParameters.OnTheBillId != new Guid())
+            {
+                events = events.Where(x => x.Places.Any(x=>x.Order.Payments.Any(x=>x.Id == eventQueryParameters.OnTheBillId)));
             }
 
             if (!string.IsNullOrWhiteSpace(eventQueryParameters.OrganizedBy))

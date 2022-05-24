@@ -48,6 +48,7 @@ namespace Repository
         public async Task<Order> GetOrderByIdAsync(Guid id)
         {
             return await FindByCondition(order => order.Id.Equals(id))
+                .Include(x=>x.Places)
                 .FirstOrDefaultAsync();
         }
 

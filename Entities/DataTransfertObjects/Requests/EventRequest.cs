@@ -52,9 +52,8 @@ namespace Entities.DataTransfertObjects
 
         public Guid SponsorId { get; set; }
         
-        [Required]
         [Display(Name = "Bannière")]
-        public IFormFile File { get; set; }
+        public IFormFile? File { get; set; }
 
         public string Lieu { get; set; }
         [Display(Name = "J'utilise mon propre creat")]

@@ -48,6 +48,7 @@ namespace Repository
         public async Task<Payment> GetPaymentByIdAsync(Guid id)
         {
             return await FindByCondition(payment => payment.Id.Equals(id))
+                .Include(x=>x.Order).ThenInclude(x => x.Places).ThenInclude(x => x.Event)
                 .Include(x=>x.AppUser)
                 .FirstOrDefaultAsync();
         }

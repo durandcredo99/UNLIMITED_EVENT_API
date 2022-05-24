@@ -50,6 +50,7 @@ namespace Repository
         private IHttpContextAccessor _httpContextAccessor;
         private IOptions<EmailSettings> _emailSettings;
 
+        private readonly ISortHelper<AppUser> _appUserSortHelper;
         private readonly ISortHelper<Banner> _bannerSortHelper;
         private readonly ISortHelper<CategoryBlog> _categoryBlogSortHelper;
         private readonly ISortHelper<Blog> _blogSortHelper;
@@ -324,7 +325,7 @@ namespace Repository
             {
                 if (_appUser == null)
                 {
-                    _appUser = new AppUserRepository(_repoContext, _userManager);
+                    _appUser = new AppUserRepository(_repoContext, _appUserSortHelper, _userManager, _roleManager);
                 }
                 return _appUser;
             }
@@ -369,6 +370,7 @@ namespace Repository
             IWebHostEnvironment webHostEnvironment,
             IConfiguration configuration,
             IConverter converter,
+            ISortHelper<AppUser> appUserSortHelper,
             ISortHelper<Banner> bannerSortHelper,
             ISortHelper<Category> categorySortHelper,
             ISortHelper<CategoryBlog> categoryBlogSortHelper,
@@ -395,6 +397,7 @@ namespace Repository
             _configuration = configuration;
             _repoContext = repositoryContext;
 
+            _appUserSortHelper = appUserSortHelper;
             _bannerSortHelper = bannerSortHelper;
             _categorySortHelper = categorySortHelper;
             _categoryBlogSortHelper = categoryBlogSortHelper;
