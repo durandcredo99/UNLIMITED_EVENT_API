@@ -10,7 +10,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />
+    <None Include="wwwroot\lib\dink-to-pdf\32 bit\libwkhtmltox.dll" />
+    <None Include="wwwroot\lib\dink-to-pdf\32 bit\libwkhtmltox.dylib" />
+    <None Include="wwwroot\lib\dink-to-pdf\32 bit\libwkhtmltox.so" />
+    <None Include="wwwroot\lib\dink-to-pdf\64 bit\libwkhtmltox.dll" />
+    <None Include="wwwroot\lib\dink-to-pdf\64 bit\libwkhtmltox.dylib" />
+    <None Include="wwwroot\lib\dink-to-pdf\64 bit\libwkhtmltox.so" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.1" NoWarn="NU1605" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.1" NoWarn="NU1605" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />

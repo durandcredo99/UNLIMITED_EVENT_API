@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "FVbGP4E+RbfSgLAFJCuuZl3u4XEaJwdPqWgNBMlhAmCyQPtTP+Ze3x+lLSkMhpg/XvOJB2sw+wEIvWRBu6pBCg==",
+  "dgSpecHash": "u2Qtt3nxa81B3P3Oskzu6UyMYoMM5J4yU/7xLdUvTyfJiZLGHz7OxCjVACMBi6wXHgSxkiSqxjlhpsc/XdfgSg==",
   "success": true,
   "projectFilePath": "D:\\PROFESSIONNEL\\PROJETS\\SIMPLE IT\\UNLIMITED EVENT\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API\\UNLIMITED_EVENT_API.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\AmStrong\\.nuget\\packages\\automapper\\7.0.1\\automapper.7.0.1.nupkg.sha512",
-    "C:\\Users\\AmStrong\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\5.0.1\\automapper.extensions.microsoft.dependencyinjection.5.0.1.nupkg.sha512",
+    "C:\\Users\\AmStrong\\.nuget\\packages\\automapper\\8.1.1\\automapper.8.1.1.nupkg.sha512",
+    "C:\\Users\\AmStrong\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\6.1.1\\automapper.extensions.microsoft.dependencyinjection.6.1.1.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\dinktopdf\\1.0.8\\dinktopdf.1.0.8.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\mailkit\\2.0.1\\mailkit.2.0.1.nupkg.sha512",
@@ -163,7 +163,6 @@
     "C:\\Users\\AmStrong\\.nuget\\packages\\system.threading.thread\\4.3.0\\system.threading.thread.4.3.0.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\system.threading.threadpool\\4.3.0\\system.threading.threadpool.4.3.0.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
-    "C:\\Users\\AmStrong\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\AmStrong\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",

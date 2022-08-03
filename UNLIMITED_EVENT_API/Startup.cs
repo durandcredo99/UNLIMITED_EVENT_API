@@ -18,6 +18,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Entities.Helpers;
+using DinkToPdf.Contracts;
+using DinkToPdf;
 
 namespace UNLIMITED_EVENT_API
 {
@@ -27,6 +30,8 @@ namespace UNLIMITED_EVENT_API
         {
             LogManager.LoadConfiguration(Path.Combine(webHostEnvironment.WebRootPath, "logfiles", "nlog.config"));
             Configuration = configuration;
+
+            new CustomAssemblyLoadContext().LoadUnmanagedLibrary(Path.Combine(webHostEnvironment.WebRootPath, "lib", "dink-to-pdf", "64 bit", "libwkhtmltox.dll"));
         }
 
         public IConfiguration Configuration { get; }
@@ -49,6 +54,7 @@ namespace UNLIMITED_EVENT_API
             services.AddAutoMapper(typeof(MappingProfile));
 
             services.AddControllers();
+            services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
             services.AddSwaggerGen(c =>
             {

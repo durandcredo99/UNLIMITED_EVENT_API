@@ -21,17 +21,17 @@ namespace UNLIMITED_EVENT_API
                 /*.ForMember(dest => dest.Name, src => src.MapFrom(src => src.Name))*/;
 
 
-            CreateMap<LoginRequest, LoginModel>();
-            CreateMap<Authentication, Authentication>();
-
-            CreateMap<CategoryBlog, CategoryBlogResponse>().ReverseMap();
-            CreateMap<CategoryBlogRequest, CategoryBlog>().ReverseMap();
+            CreateMap<AnnualRate, AnnualRateResponse>().ReverseMap();
+            CreateMap<AnnualRateRequest, AnnualRate>().ReverseMap();
 
             CreateMap<Blog, BlogResponse>().ReverseMap();
             CreateMap<BlogRequest, Blog>().ReverseMap();
 
-            CreateMap<Command, CommandResponse>().ReverseMap();
-            CreateMap<CommandRequest, Command>().ReverseMap();
+            CreateMap<CategoryBlog, CategoryBlogResponse>().ReverseMap();
+            CreateMap<CategoryBlogRequest, CategoryBlog>().ReverseMap();
+
+            CreateMap<LoginRequest, LoginModel>();
+            CreateMap<Authentication, Authentication>();
 
             CreateMap<Comment, CommentResponse>().ReverseMap();
             CreateMap<CommentRequest, Comment>().ReverseMap();
@@ -45,11 +45,11 @@ namespace UNLIMITED_EVENT_API
             CreateMap<Event, EventResponse>().ReverseMap();
             CreateMap<EventRequest, Event>().ReverseMap();
 
+            CreateMap<Order, OrderResponse>().ReverseMap();
+            CreateMap<OrderRequest, Order>().ReverseMap();
+
             CreateMap<Payment, PaymentResponse>().ReverseMap();
             CreateMap<PaymentRequest, Payment>().ReverseMap();
-
-            CreateMap<PaymentType, PaymentTypeResponse>().ReverseMap();
-            CreateMap<PaymentTypeRequest, PaymentType>().ReverseMap();
 
             CreateMap<Place, PlaceResponse>().ReverseMap();
             CreateMap<PlaceRequest, Place>().ReverseMap();
@@ -63,14 +63,8 @@ namespace UNLIMITED_EVENT_API
             CreateMap<Partner, PartnerResponse>().ReverseMap();
             CreateMap<PartnerRequest, Partner>().ReverseMap();
 
-            CreateMap<Rate, RateResponse>().ReverseMap();
-            CreateMap<RateRequest, Rate>().ReverseMap();
             //CreateMap<University, UniversityResponse>()
             //    .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
-
-
-
-
         }
     }
 }

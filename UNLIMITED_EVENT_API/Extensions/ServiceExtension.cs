@@ -7,6 +7,7 @@ using LoggerServices;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -75,19 +76,28 @@ namespace UNLIMITED_EVENT_API.Extensions
         public static void ConfigureRepositoryWrapper(this IServiceCollection services)
         {
             services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<ISortHelper<AppUser>, SortHelper<AppUser>>();
+            services.AddScoped<ISortHelper<Banner>, SortHelper<Banner>>();
             services.AddScoped<ISortHelper<Category>, SortHelper<Category>>();
             services.AddScoped<ISortHelper<CategoryBlog>, SortHelper<CategoryBlog>>();
             services.AddScoped<ISortHelper<Blog>, SortHelper<Blog>>();
-            services.AddScoped<ISortHelper<Command>, SortHelper<Command>>();
+            services.AddScoped<ISortHelper<Order>, SortHelper<Order>>();
             services.AddScoped<ISortHelper<Comment>, SortHelper<Comment>>();
+            services.AddScoped<ISortHelper<SubCategory>, SortHelper<SubCategory>>();
             services.AddScoped<ISortHelper<Commercial>, SortHelper<Commercial>>();
             services.AddScoped<ISortHelper<Event>, SortHelper<Event>>();
             services.AddScoped<ISortHelper<Payment>, SortHelper<Payment>>();
-            services.AddScoped<ISortHelper<PaymentType>, SortHelper<PaymentType>>();
             services.AddScoped<ISortHelper<Place>, SortHelper<Place>>();
-            services.AddScoped<ISortHelper<Sponsor>, SortHelper<Sponsor>>();
+            services.AddScoped<ISortHelper<Promote>, SortHelper<Promote>>();
+            services.AddScoped<ISortHelper<PromoteEvent>, SortHelper<PromoteEvent>>();
+            services.AddScoped<ISortHelper<AnnualRate>, SortHelper<AnnualRate>>();
             services.AddScoped<ISortHelper<Partner>, SortHelper<Partner>>();
-            services.AddScoped<ISortHelper<Rate>, SortHelper<Rate>>();
+            services.AddScoped<ISortHelper<Sponsor>, SortHelper<Sponsor>>();
+            services.AddScoped<ISortHelper<Workstation>, SortHelper<Workstation>>();
+
+            services.AddScoped<IPromoteRepository, PromoteRepository>();
+            services.AddScoped<IPromoteEventRepository, PromoteEventRepository>();
+            services.AddScoped<IAnnualRateRepository, AnnualRateRepository>();
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
         }
 
@@ -230,7 +240,18 @@ namespace UNLIMITED_EVENT_API.Extensions
 
         public static void ConfigureMailService(this IServiceCollection services, IConfiguration config)
         {
-            services.Configure<EmailSettings>(config.GetSection("EmailSettings"));
+            var emailConfig = config
+                .GetSection("EmailConfiguration")
+                .Get<EmailConfiguration>();
+            services.AddSingleton(emailConfig);
+
+
+            services.Configure<FormOptions>(o =>
+            {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
         }
     }
 }

@@ -220,16 +220,9 @@ namespace UNLIMITED_EVENT_API.Controllers
             var encodedToken = await _repository.Account.EncodeTokenAsync(token);
 
             string url = $"{_baseURL}/api/accounts/confirmemail?userId={userId}&token={encodedToken}";
+            var message = new Message(new string[] { user.Email }, "Confirmation email link", $"<h1>Welcome to A-UN</h1><p>Please confirm your email by <a href='{url}'>Clicking here</a></p>", null);
 
-            var email = new EmailModel
-            {
-                ToEmail = user.Email,
-                ToName = user.Firstname,
-                Subject = "Confirm your email",
-                Body = $"<h1>Welcome to A-UN</h1><p>Please confirm your email by <a href='{url}'>Clicking here</a></p>",
-            };
-
-            await _repository.Mail.SendEmailAsync(email);
+            await _repository.EmailSender.SendAsync(message);
         }
 
 
@@ -267,19 +260,10 @@ namespace UNLIMITED_EVENT_API.Controllers
 
             if (result.IsSuccess)
             {
-
                 string url = $"{_baseURL}/api/accounts/resetpassword?email={email}&token={result.Token}";
+                var message = new Message(new string[] { email }, "Reset Password", $"<h1>Follow the instruction to reset your password</h1> <p> To reset your password <a href='{url}'>Clicking here</a></p>", null);
 
-                var emailData = new EmailModel
-                {
-                    ToEmail = result.UserInfo["Email"],
-                    ToName = result.UserInfo["Name"],
-                    Subject = "Reset Password",
-                    Body = $"<h1>Follow the instruction to reset your password</h1> <p> To reset your password <a href='{url}'>Clicking here</a></p>",
-                };
-
-                await _repository.Mail.SendEmailAsync(emailData);
-
+                await _repository.EmailSender.SendAsync(message);
                 return Ok(result);
             }
 
@@ -297,9 +281,9 @@ namespace UNLIMITED_EVENT_API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _repository.Account.ResetPasswordAsync(model);
+                //var result = await _repository.Account.ResetPasswordAsync(model);
 
-                if (result.IsSuccess) return Ok(result);
+                //if (result.IsSuccess) return Ok(result);
             }
 
             return ValidationProblem(ModelState);
